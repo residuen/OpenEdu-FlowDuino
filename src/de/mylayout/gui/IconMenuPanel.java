@@ -10,12 +10,12 @@ import java.util.HashMap;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
+
+import de.mylayout.listener.DrawListener;
+import de.mylayout.listener.MenuListener;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;
@@ -27,16 +27,16 @@ public class IconMenuPanel extends JPanel {
 	 * Komponenten Objekte beinhaltet (Textfelder, Checkboxen, usw.)
 	 * @param inputComponents
 	 */
-	public IconMenuPanel(HashMap<String, Component> inputComponents)
+	public IconMenuPanel(DrawListener drawListener, HashMap<String, Component> inputComponents)
 	{
-		initPanel(inputComponents);
+		initPanel(drawListener, inputComponents);
 	}
 
 	/**
 	 * Initialisierung des Panels mit Buttons und Icons fuer das Menue 
 	 * @param inputComponents
 	 */
-	private void initPanel(HashMap<String, Component> inputComponents)
+	private void initPanel(DrawListener drawListener, HashMap<String, Component> inputComponents)
 	{
 		setBackground(new Color(215, 215, 215));	// Hintergrundfarbe festlegen
 		
@@ -48,7 +48,7 @@ public class IconMenuPanel extends JPanel {
 		// GUI-Modus aus Componente lesen
 //		int guiMode = new Integer(((JTextField)inputComponents.get("guimode")).getText());
 		
-//		MenuListener menuListener = new MenuListener(inputComponents);	// neuen MenuListener initialisieren
+		MenuListener menuListener = new MenuListener(drawListener); //inputComponents);	// neuen MenuListener initialisieren
 
 		Box vBox = Box.createVerticalBox();			// Box-Container fuer vertikales Layout anlegen
 		Dimension dim = new Dimension(50, 50);	// Dimensions-Objekt fuer Groesse der Buttons
@@ -60,27 +60,42 @@ public class IconMenuPanel extends JPanel {
 		 *  des MenuPanels
 		 */
 		
-		// Laden einer Prozess-Anlage
-//		if(guiMode==Dialog.SERVER_MODE || guiMode==Dialog.SERVER_CLIENT_MODE)
-		{
-			panel = new JPanel(new GridLayout(1, 1));
-			button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
+		panel = new JPanel(new GridLayout(1, 1));
+		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
 //			button = new JToggleButton("<html>Fang<br/>aus</html>",
 //					new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
-			button.setFont(font);
-			button.setToolTipText("Fang ein/ausschalten");
-			button.setName("catch");
-			inputComponents.put(button.getName(), button);
-			button.setHorizontalTextPosition(SwingConstants.CENTER);
-			button.setVerticalTextPosition(SwingConstants.BOTTOM);
-			button.setPreferredSize(dim);
-			button.setMinimumSize(dim);
-//			button.addActionListener(menuListener);
-			panel.add(button);
-			vBox.add(panel);
-			vBox.add(Box.createVerticalStrut(5));
-		}
-		
+		button.setFont(font);
+		button.setSelected(true);
+		button.setToolTipText("Fang ein/ausschalten");
+		button.setName("catch");
+		inputComponents.put(button.getName(), button);
+		button.setHorizontalTextPosition(SwingConstants.CENTER);
+		button.setVerticalTextPosition(SwingConstants.BOTTOM);
+		button.setPreferredSize(dim);
+		button.setMinimumSize(dim);
+		button.addActionListener(menuListener);
+		panel.add(button);
+		vBox.add(panel);
+		vBox.add(Box.createVerticalStrut(5));
+
+		panel = new JPanel(new GridLayout(1, 1));
+		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/pointer.png")));
+//			button = new JToggleButton("<html>Fang<br/>aus</html>",
+//					new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
+		button.setFont(font);
+		button.setToolTipText("<html>Auswahl</html>");
+		button.setName("pointer");
+		bgroup.add(button);
+		inputComponents.put(button.getName(), button);
+		button.setHorizontalTextPosition(SwingConstants.CENTER);
+		button.setVerticalTextPosition(SwingConstants.BOTTOM);
+		button.setPreferredSize(dim);
+		button.setMinimumSize(dim);
+		button.addActionListener(menuListener);
+		panel.add(button);
+		vBox.add(panel);
+		vBox.add(Box.createVerticalStrut(3));
+
 		// Starten der Visualisierung
 		panel = new JPanel(new GridLayout(1, 1));
 		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/line.png")));
@@ -95,10 +110,10 @@ public class IconMenuPanel extends JPanel {
 		button.setVerticalTextPosition(SwingConstants.BOTTOM);
 		button.setPreferredSize(dim);
 		button.setMinimumSize(dim);
-//		button.addActionListener(menuListener);
+		button.addActionListener(menuListener);
 		panel.add(button);
 		vBox.add(panel);
-		vBox.add(Box.createVerticalStrut(5));
+		vBox.add(Box.createVerticalStrut(3));
 		
 		panel = new JPanel(new GridLayout(1, 1));
 		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/path.png")));
@@ -113,10 +128,10 @@ public class IconMenuPanel extends JPanel {
 		button.setVerticalTextPosition(SwingConstants.BOTTOM);
 		button.setPreferredSize(dim);
 		button.setMinimumSize(dim);
-//		button.addActionListener(menuListener);
+		button.addActionListener(menuListener);
 		panel.add(button);
 		vBox.add(panel);
-		vBox.add(Box.createVerticalStrut(5));
+		vBox.add(Box.createVerticalStrut(3));
 
 		// Infos ueber das Programm
 		panel = new JPanel(new GridLayout(1, 1));
@@ -131,7 +146,7 @@ public class IconMenuPanel extends JPanel {
 		button.setPreferredSize(dim);
 		button.setMinimumSize(dim);
 		bgroup.add(button);
-//		button.addActionListener(menuListener);
+		button.addActionListener(menuListener);
 		panel.add(button);
 		vBox.add(panel);
 

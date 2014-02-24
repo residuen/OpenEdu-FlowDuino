@@ -13,19 +13,23 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 import de.mylayout.gui.About;
+import de.mylayout.tools.PaintConstants;
 
 public class MenuListener implements ActionListener, MouseListener
 {
+	private DrawListener drawListener = null;
 	
 	/**
 	 * Konstruktor bekommt HashMap mit Komponentenliste uebergeben
 	 * @param inputComponents
 	 */
-	public MenuListener() // HashMap<String,Component> inputComponents)
+	public MenuListener(DrawListener drawListener) // HashMap<String,Component> inputComponents)
 	{
 //		this.inputComponents = inputComponents;
+		this.drawListener = drawListener;
 	}
 	
 	/**
@@ -45,6 +49,21 @@ public class MenuListener implements ActionListener, MouseListener
 	{
 		System.out.println("cmd=" + event);	// Zu Kontrollzwecken: Ausgabe des gedrueckten Buttons
 		
+		if(event.equals("catch"))
+			drawListener.setCatchMode( ((JToggleButton)(arg0.getSource())).isSelected());
+		
+		if(event.equals("pointer"))
+			drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_POINTER);
+		else
+			if(event.equals("line"))
+				drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_LINE);
+			else
+				if(event.equals("path"))
+					drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_PATH);
+				else
+					if(event.equals("contact"))
+						drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_CONTACT);
+
 		if(event.equals("about"))
 			new About();
 		
@@ -53,7 +72,7 @@ public class MenuListener implements ActionListener, MouseListener
 	public void mouseClicked(MouseEvent arg0)
 	{
 		String cmd = ((Component)arg0.getSource()).getName();
-
+		
 		event(cmd, null);
 	}
 

@@ -9,6 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import de.mylayout.listener.DrawListener;
 import de.mylayout.listener.MenuListener;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
@@ -18,16 +19,16 @@ import de.mylayout.listener.MenuListener;
  */
 public class MainMenu extends JMenuBar {
 
-	public MainMenu() //HashMap<String,Component> inputComponents)
+	public MainMenu(DrawListener drawListener) //HashMap<String,Component> inputComponents)
 	{
 		super();
 
-		initMenuBar(); //inputComponents);
+		initMenuBar(drawListener); //inputComponents);
 	}
 //
-	private void initMenuBar() // HashMap<String, Component> inputComponents)
+	private void initMenuBar(DrawListener drawListener) // HashMap<String, Component> inputComponents)
 	{
-		MenuListener menuListener = new MenuListener(); // inputComponents);
+		MenuListener menuListener = new MenuListener(drawListener); // inputComponents);
 		
 		JMenu help = new JMenu("Hilfe");
 		JMenu properties = new JMenu("Einstellungen");

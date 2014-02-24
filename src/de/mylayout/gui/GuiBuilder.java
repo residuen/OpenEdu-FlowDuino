@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import de.mylayout.listener.DrawListener;
+
 /**
  * Initialisiert wichtige Objekte
  * setzt das Look&Feel und baut die GUI auf
@@ -44,13 +46,14 @@ public class GuiBuilder
 
 //		inputDialog.dispose();
 //		inputDialog = null;
+		DrawListener drawListener = new DrawListener();
 		
 		MainFrame mainFrame = new MainFrame("OpenEdu-MyLayout");
 		mainFrame.getContentPane().setLayout(new BorderLayout());
 		
-		mainFrame.setJMenuBar(new MainMenu());
+		mainFrame.setJMenuBar(new MainMenu(drawListener));
 		
-		MainPanel mainPanel = new MainPanel(inputComponents);
+		MainPanel mainPanel = new MainPanel(drawListener, inputComponents);
 		
 		mainFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		mainFrame.getContentPane().add(status, BorderLayout.SOUTH);

@@ -15,11 +15,11 @@ public class LayoutPanel extends JInternalFrame  {
 
 	private ArrayList<ObjectInterface> objects = new ArrayList<ObjectInterface>();
 
-	public LayoutPanel(JTextField status)
+	public LayoutPanel(DrawListener drawListener, JTextField status)
 	{
 		setLayout(new BorderLayout());
 		
-		add(new DrawPanel(objects, status), BorderLayout.CENTER);
+		add(new DrawPanel(drawListener, objects, status), BorderLayout.CENTER);
 	}
 	
 
