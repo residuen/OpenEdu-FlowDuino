@@ -84,6 +84,11 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 		return lineWidth;
 	}
 	
+	@Override
+	public void setLineWidth(float lineWidth) {
+		this.lineWidth = lineWidth;
+	}
+	
 	public Shape getShape() { return null; }
 
 	@Override

@@ -94,4 +94,9 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 		
 	}
 
+	@Override
+	public void setLineWidth(float lineWidth) {
+		this.lineWidth = lineWidth;
+	}
+
 }

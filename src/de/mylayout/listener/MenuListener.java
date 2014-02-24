@@ -56,13 +56,22 @@ public class MenuListener implements ActionListener, MouseListener
 			drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_POINTER);
 		else
 			if(event.equals("line"))
+			{
 				drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_LINE);
+				drawListener.setObjectSelected(PaintConstants.LINE_OBJECT);
+			}
 			else
 				if(event.equals("path"))
+				{
 					drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_PATH);
+					drawListener.setObjectSelected(PaintConstants.PATH_OBJECT);
+				}
 				else
 					if(event.equals("contact"))
+					{
 						drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_CONTACT);
+						drawListener.setObjectSelected(PaintConstants.CIRCLE_OBJECT);
+					}
 
 		if(event.equals("about"))
 			new About();

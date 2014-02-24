@@ -89,6 +89,11 @@ public class Line extends Line2D.Double implements ObjectInterface {
 		// TODO Auto-generated method stub
 		return lineWidth;
 	}
+	
+	@Override
+	public void setLineWidth(float lineWidth) {
+		this.lineWidth = lineWidth;
+	}
 
 	@Override
 	public void addPoint(double x, double y) {

@@ -12,6 +12,7 @@ public interface ObjectInterface extends Shape {
 	public Color getFillColor();
 	
 	public float getLineWidth();
+	public void setLineWidth(float lineWidth);
 	public BasicStroke getStroke();
 	
 	public void movePoint(int n, double x, double y);

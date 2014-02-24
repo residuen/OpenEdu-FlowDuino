@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 import de.mylayout.interfaces.ObjectInterface;
+import de.mylayout.objects.Circle;
 import de.mylayout.objects.Line;
 import de.mylayout.tools.PaintConstants;
 import de.mylayout.visu.DrawPanel;
@@ -85,8 +86,6 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		status.setText(mousePressed+" x="+x+" y="+y+" xx="+xx+" yy="+yy+" wh="+wh+" -> Object Nr. "+objects.size());
 		catcherRect.movePoint(1, xx, yy);
 		catcherRect.movePoint(2, wh,wh);
-
-//		comp.repaint();
 	}
 	
 	@Override
@@ -109,10 +108,12 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-//		System.out.println("mousePressed");
+		System.out.println("mousePressed");
 //		status.setText("mousePressed");
 		
 		mousePressed = true;
+		
+		double a=0, b=0, c=0;
 		
 		x1 = arg0.getX();
 		y1 = arg0.getY();
@@ -129,7 +130,29 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		x2 = x1;
 		y2 = y1;
 		
-		object = new Line(x1, y1, x2, y2);
+		if(objectTyp == PaintConstants.LINE_OBJECT)
+		{
+			object = new Line(x1, y1, x2, y2);
+			System.out.println("objectTyp="+objectTyp);
+		}
+		else
+			if(objectTyp == PaintConstants.PATH_OBJECT)
+			{
+				object = new Line(x1, y1, x2, y2);
+				System.out.println("objectTyp="+objectTyp);
+			}
+			else
+//			if(objectTyp == PaintConstants.CIRCLE_OBJECT)
+			{
+				a = catcherRect.getBounds().getWidth();
+				b = 10;
+				c = (a-b)/2;
+				
+				object = new Circle(x1-c, y1-c, b, b);
+				object.setLineWidth(2);
+				
+				mousePressed = false;
+			}
 		
 		objects.add(object);
 		
@@ -239,7 +262,14 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	public void setMenuCLicked(int menuCLicked) {
 		this.menuCLicked = menuCLicked;
 		
-//		System.out.println("this.menuCLicked="+this.menuCLicked);
+//		System.out.println("this.objectTyp="+this.objectTyp);
+	}
+
+	public void setObjectSelected(int objectTyp) {
+
+		this.objectTyp = objectTyp;
+		
+//		System.out.println("this.objectTyp="+this.objectTyp);
 	}
 
 	public void setCatchMode(boolean catchMode) {

@@ -150,6 +150,11 @@ public class Path implements ObjectInterface {
 	}
 	
 	@Override
+	public void setLineWidth(float lineWidth) {
+		this.lineWidth = lineWidth;
+	}
+	
+	@Override
 	public Shape getShape() { return gp; }
 
 	@Override
