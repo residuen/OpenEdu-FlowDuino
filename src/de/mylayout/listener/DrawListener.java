@@ -38,11 +38,11 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	
 	private ObjectInterface catcherRect;
 	
-	private String selectedIconMenuItem = "";
+//	private String selectedIconMenuItem = "";
 	
 	private boolean mousePressed = false;
-	private boolean mouseReleased = false;
-	private boolean mouseDragged = false;
+//	private boolean mouseReleased = false;
+//	private boolean mouseDragged = false;
 	
 	private int clickCounter = 0;
 	
@@ -191,7 +191,6 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 			{
 				mousePressed = false;
 				clickCounter = 0;
-//				System.out.println("gleiche Zelle");
 			}
 		}
 		else

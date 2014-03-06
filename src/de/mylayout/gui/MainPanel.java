@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import de.mylayout.listener.DrawListener;
 import de.mylayout.visu.LayoutPanel;
+import de.mylayout.visu.ObjectListPanel;
 
 /**
  * Hauptpanel, beinhaltet alle Komponeten-Panels
@@ -49,6 +50,13 @@ public class MainPanel extends JPanel
 
 		mdiFrame.setVisible(true);
 		mdiFrame.add(lp);
+		
+		ObjectListPanel olp = new ObjectListPanel();
+		olp.setSize(160, 480);
+		olp.setLocation(640, 0);
+		olp.setResizable(true);
+		olp.setVisible(true);
+		mdiFrame.add(olp);
 		
 		// Das IconMenuPanel in einen ScrollPane geben
 		JScrollPane leftScrollpane = new JScrollPane(new IconMenuPanel(drawListener, inputComponents), JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // contentPanel));

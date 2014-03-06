@@ -22,7 +22,7 @@ public class MainFrame extends JFrame
 	private void initFrame()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	// Verhalten bei Fenster-Schliessen
-		setSize(1000, 700);								// Groesse des Fensters
+		setSize(1050, 700);								// Groesse des Fensters
 		setLocation(5, 5);								// Position des Fensters auf dem Desktop
 //		setLocation(1930, 25);
 	}
