@@ -16,10 +16,10 @@ import de.mylayout.tools.PaintConstants;
  
 public class Path implements ObjectInterface {
 
-	private Color lineColor = Color.black;
+	private Color lineColor = Color.BLUE;
 	private Color fillColor = Color.white;
 	
-	private float lineWidth = 1.0f;
+	private float lineWidth = 2.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
 	
@@ -28,6 +28,8 @@ public class Path implements ObjectInterface {
 	private ArrayList<double[]> points = new ArrayList<double[]>();
 	
 	private BasicStroke stroke = new BasicStroke(lineWidth);
+	
+	private boolean closed = false;
 	
 	public BasicStroke getStroke() {
 		return stroke;
@@ -80,6 +82,23 @@ public class Path implements ObjectInterface {
 	public void movePoint(int n, double x, double y)
 	{
 //		setLine(x, y, getX2(), getY2());
+		double point[] = new double[2];
+		point[0] = x;
+		point[1] = y;
+		
+		points.set(points.size()-1, point);
+		
+		gp.reset();
+		
+		for(int i=0; i<points.size(); i++)
+		{
+			if(i==0)
+				gp.moveTo(points.get(i)[0], points.get(i)[1]);
+			else
+				gp.lineTo(points.get(i)[0], points.get(i)[1]);
+		}
+		
+		
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package de.mylayout.listener;
 
 import java.awt.Component;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -13,6 +14,7 @@ import javax.swing.JTextField;
 import de.mylayout.interfaces.ObjectInterface;
 import de.mylayout.objects.Circle;
 import de.mylayout.objects.Line;
+import de.mylayout.objects.Path;
 import de.mylayout.tools.PaintConstants;
 import de.mylayout.visu.DrawPanel;
 
@@ -28,7 +30,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	
 	private boolean catchMode = true;
 	
-	private double zoom = 10;
+	private double zoom = 10, xx, yy;
 	
 	private ObjectInterface object = null;
 	
@@ -41,6 +43,11 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	private boolean mousePressed = false;
 	private boolean mouseReleased = false;
 	private boolean mouseDragged = false;
+	
+	private int clickCounter = 0;
+	
+	private Point previousSelectedCell = new Point(0,0);
+	private Point currentSelectedCell = new Point(0,0);
 	
 	private double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 	
@@ -67,8 +74,8 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 //		System.out.println(arg0.paramString());
 //		status.setText(arg0.paramString());
 		
-		double x = arg0.getX(), xx;
-		double y = arg0.getY(), yy;
+		double x = arg0.getX();
+		double y = arg0.getY();
 		double wh = PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE;
 		
 		if(catchMode)
@@ -108,18 +115,16 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		System.out.println("mousePressed");
-//		status.setText("mousePressed");
+//		status.setText("mousePressed: selectedCell="+selectedCell.getX()+","+selectedCell.getY()+" lastSelectedCell="+lastSelectedCell.getX()+","+lastSelectedCell.getY());
 		
 		mousePressed = true;
+		
+		clickCounter++;
 		
 		double a=0, b=0, c=0;
 		
 		x1 = arg0.getX();
 		y1 = arg0.getY();
-		
-//		x2 = x1;
-//		y2 = y1;
 		
 		if(catchMode)
 		{
@@ -130,6 +135,20 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		x2 = x1;
 		y2 = y1;
 		
+		// Speichern der beiden letzten Klick-Positionen 
+		if(clickCounter==1)
+		{
+			previousSelectedCell.setLocation((int)xx,(int)yy);	
+		}
+		else
+			if(clickCounter>1)
+			{
+				previousSelectedCell.setLocation(currentSelectedCell.getX(),currentSelectedCell.getY());	
+				currentSelectedCell.setLocation((int)xx,(int)yy);
+			}
+		
+		System.out.println("mousePressed: clickCounter="+clickCounter+" selectedCell="+previousSelectedCell.getX()+","+previousSelectedCell.getY()+" lastSelectedCell="+currentSelectedCell.getX()+","+currentSelectedCell.getY());
+
 		if(objectTyp == PaintConstants.LINE_OBJECT)
 		{
 			object = new Line(x1, y1, x2, y2);
@@ -138,7 +157,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		else
 			if(objectTyp == PaintConstants.PATH_OBJECT)
 			{
-				object = new Line(x1, y1, x2, y2);
+				object = new Path(x1, y1, x2, y2);
 				System.out.println("objectTyp="+objectTyp);
 			}
 			else
@@ -164,9 +183,31 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		System.out.println("mouseReleased");
+		System.out.println("mouseReleased:"+objectTyp+"->("+previousSelectedCell.getX()+","+currentSelectedCell.getX()+")("+previousSelectedCell.getY()+","+currentSelectedCell.getY()+")");
 
-		mousePressed = false;
+		if(objectTyp == PaintConstants.PATH_OBJECT)
+		{
+			if(previousSelectedCell.getX()==currentSelectedCell.getX() && previousSelectedCell.getY()==currentSelectedCell.getY())
+			{
+				mousePressed = false;
+				clickCounter = 0;
+//				System.out.println("gleiche Zelle");
+			}
+		}
+		else
+			if(objectTyp == PaintConstants.LINE_OBJECT)
+			{
+				if(clickCounter==2)
+				{
+					mousePressed = false;
+					clickCounter = 0;
+				}
+			}
+			else
+			{
+				mousePressed = false;
+				clickCounter = 0;
+			}
 
 	}
 
@@ -175,7 +216,32 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		System.out.println("mouseDragged");
 		status.setText("mouseDragged");
 
-		if(mousePressed)
+//		if(mousePressed)
+//		{
+//			x2 = arg0.getX();
+//			y2 = arg0.getY();
+//
+//			if(catchMode)
+//			{
+//				x2 = x2 - x2%25 + (int)(catcherRect.getBounds().getWidth())/2;
+//				y2 = y2 - y2%25 + (int)(catcherRect.getBounds().getHeight())/2;	
+//			}
+//			
+//			status.setText(mousePressed+" mouseDragged: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size());
+//			status.setText(status.getText()+" "+object.getBounds2D().getX() +" "+object.getBounds2D().getY()+" "+object.getBounds2D().getWidth()+" "+object.getBounds2D().getHeight());
+//			object.movePoint(2, x2, y2);
+//			
+//			moveCatcherRect(arg0);
+//			
+//			comp.repaint();
+//		}
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		
+		if(mousePressed && clickCounter>0)
 		{
 			x2 = arg0.getX();
 			y2 = arg0.getY();
@@ -186,35 +252,10 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 				y2 = y2 - y2%25 + (int)(catcherRect.getBounds().getHeight())/2;	
 			}
 			
-			status.setText(mousePressed+" mouseDragged: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size());
+			status.setText(mousePressed+" mouseMoved: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size());
 			status.setText(status.getText()+" "+object.getBounds2D().getX() +" "+object.getBounds2D().getY()+" "+object.getBounds2D().getWidth()+" "+object.getBounds2D().getHeight());
 			object.movePoint(2, x2, y2);
-			
-			moveCatcherRect(arg0);
-			
-			comp.repaint();
 		}
-		
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-//		System.out.println("mouseMoved");
-//		status.setText("mouseMoved");
-//		
-//		double x = arg0.getX(), xx;
-//		double y = arg0.getY(), yy;
-//		double wh = PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE;
-//		
-//		xx = x - x%25;
-//		yy = y - y%25;	
-//		
-//		status.setText(mousePressed+" mouseMoved: x="+x+" y="+y+" xx="+xx+" yy="+yy+" wh="+wh+" -> Object Nr. "+objects.size());
-////		catcherRect.moveObjectAbsolute(arg0.getX()*GRID_STEP*zoom, arg0.getY()*GRID_STEP*zoom);
-//		catcherRect.movePoint(1, xx, yy);
-//		catcherRect.movePoint(2, wh,wh);
-//		
-//		comp.repaint();
 		
 		moveCatcherRect(arg0);
 		

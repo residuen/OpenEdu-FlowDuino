@@ -12,7 +12,7 @@ import de.mylayout.tools.PaintConstants;
  
 public class Circle extends Arc2D.Double implements ObjectInterface {
 
-	private Color lineColor = Color.black;
+	private Color lineColor = Color.RED;
 	private Color fillColor = Color.white;
 	
 	private float lineWidth = 1.0f;

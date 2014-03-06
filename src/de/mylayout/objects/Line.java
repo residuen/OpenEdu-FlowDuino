@@ -11,7 +11,7 @@ import de.mylayout.tools.PaintConstants;
  
 public class Line extends Line2D.Double implements ObjectInterface {
 
-	private Color lineColor = Color.black;
+	private Color lineColor = Color.GREEN;
 	private Color fillColor = Color.white;
 	
 	private float lineWidth = 2.0f;

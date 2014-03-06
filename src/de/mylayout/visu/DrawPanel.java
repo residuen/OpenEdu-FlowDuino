@@ -67,6 +67,8 @@ public class DrawPanel extends JPanel implements ComponentListener {
 		}
 		
 		g2d.setStroke(new BasicStroke(1));
+		
+		g2d.setColor(Color.BLACK);
 		g2d.draw(catcherRect);
 	}
 	

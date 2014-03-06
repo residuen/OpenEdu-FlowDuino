@@ -70,7 +70,7 @@ public class About extends JFrame
 		Container cp = getContentPane();
 		cp.add(panel);
 		frame = new JFrame();
-		frame.setTitle("VirtualProcessManagement");
+		frame.setTitle("OpenEdu-MyLayout");
 		frame.setSize(505, 230);
 		frame.setContentPane(cp);
 		frame.setLayout(new GridLayout(1,1));
