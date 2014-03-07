@@ -314,8 +314,11 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 
 	public void setCatchMode(boolean catchMode) {
 		this.catchMode = catchMode;
+	}
+
+	public void setGridMode(boolean gridMode) {
 		
-//		System.out.println("this.catchMode="+this.catchMode);
+		comp.setGridMode(gridMode);
 	}
 
 }

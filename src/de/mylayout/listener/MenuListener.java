@@ -49,6 +49,9 @@ public class MenuListener implements ActionListener, MouseListener
 	{
 		System.out.println("cmd=" + event);	// Zu Kontrollzwecken: Ausgabe des gedrueckten Buttons
 		
+		if(event.equals("grid"))
+			drawListener.setGridMode( ((JToggleButton)(arg0.getSource())).isSelected());
+		
 		if(event.equals("catch"))
 			drawListener.setCatchMode( ((JToggleButton)(arg0.getSource())).isSelected());
 		

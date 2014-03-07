@@ -61,9 +61,23 @@ public class IconMenuPanel extends JPanel {
 		 */
 		
 		panel = new JPanel(new GridLayout(1, 1));
+		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/grid2.png")));
+		button.setFont(font);
+		button.setSelected(true);
+		button.setToolTipText("Raster ein/ausschalten");
+		button.setName("grid");
+		inputComponents.put(button.getName(), button);
+//		button.setHorizontalTextPosition(SwingConstants.CENTER);
+//		button.setVerticalTextPosition(SwingConstants.BOTTOM);
+		button.setPreferredSize(dim);
+		button.setMinimumSize(dim);
+		button.addActionListener(menuListener);
+		panel.add(button);
+		vBox.add(panel);
+		vBox.add(Box.createVerticalStrut(5));
+
+		panel = new JPanel(new GridLayout(1, 1));
 		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
-//			button = new JToggleButton("<html>Fang<br/>aus</html>",
-//					new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
 		button.setFont(font);
 		button.setSelected(true);
 		button.setToolTipText("Fang ein/ausschalten");

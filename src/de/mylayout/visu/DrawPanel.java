@@ -30,6 +30,8 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	
 	private double zoom = 10;
 	
+	private boolean gridMode = true;
+	
 	public DrawPanel(DrawListener drawListener, ArrayList<ObjectInterface> objects, JTextField status)
 	{
 		this.objects = objects;
@@ -91,15 +93,16 @@ public class DrawPanel extends JPanel implements ComponentListener {
 //		System.out.println("w/PaintConstants.GRID_STEP*zoom="+ww);
 //		System.out.println("h/PaintConstants.GRID_STEP*zoom="+hh);
 
-		for(int i=0; i<(ww); i++)
-			for(int j=0; j<(hh); j++)
-			{
-				xy = PaintConstants.GRID_STEP;
-				dx = (PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE - xy) / 4;
-//				System.out.println("dx="+dx);
-				g.setStroke(new BasicStroke(2));
-				g.draw(new Circle(i*xy*zoom+dx, j*xy*zoom+dx, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom));
-			}
+		if(gridMode)
+			for(int i=0; i<(ww); i++)
+				for(int j=0; j<(hh); j++)
+				{
+					xy = PaintConstants.GRID_STEP;
+					dx = (PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE - xy) / 4;
+	//				System.out.println("dx="+dx);
+					g.setStroke(new BasicStroke(2));
+					g.draw(new Circle(i*xy*zoom+dx, j*xy*zoom+dx, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom));
+				}
 		
 		resized = false;
 			
@@ -108,6 +111,14 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	public void setZoom(double zoom)
 	{
 		this.zoom = zoom;
+	}
+
+	public void setGridMode(boolean gridMode) {
+		this.gridMode = gridMode;
+		
+		resized = true;
+		
+		repaint();
 	}
 
 	@Override
