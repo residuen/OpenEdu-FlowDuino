@@ -22,7 +22,7 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	
 	private ArrayList<ObjectInterface> objects = null;
 	
-	private ObjectInterface catcherRect = new Rectangle(-1,-1,0,0);
+	private ObjectInterface catcherRect = new Rectangle(0, -1,-1,0,0);
 	
 	private BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 	
@@ -101,7 +101,7 @@ public class DrawPanel extends JPanel implements ComponentListener {
 					dx = (PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE - xy) / 4;
 	//				System.out.println("dx="+dx);
 					g.setStroke(new BasicStroke(2));
-					g.draw(new Circle(i*xy*zoom+dx, j*xy*zoom+dx, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom));
+					g.draw(new Circle(0, i*xy*zoom+dx, j*xy*zoom+dx, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom));
 				}
 		
 		resized = false;
@@ -113,7 +113,8 @@ public class DrawPanel extends JPanel implements ComponentListener {
 		this.zoom = zoom;
 	}
 
-	public void setGridMode(boolean gridMode) {
+	public void setGridMode(boolean gridMode)
+	{
 		this.gridMode = gridMode;
 		
 		resized = true;
@@ -122,16 +123,10 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	}
 
 	@Override
-	public void componentHidden(ComponentEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void componentHidden(ComponentEvent arg0) { }
 
 	@Override
-	public void componentMoved(ComponentEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void componentMoved(ComponentEvent arg0) { }
 
 	@Override
 	public void componentResized(ComponentEvent arg0)
@@ -142,9 +137,6 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	}
 
 	@Override
-	public void componentShown(ComponentEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void componentShown(ComponentEvent arg0) { }
 
 }

@@ -13,9 +13,9 @@ import de.mylayout.listener.DrawListener;
 
 public class LayoutPanel extends JInternalFrame  {
 
-	private ArrayList<ObjectInterface> objects = new ArrayList<ObjectInterface>();
+//	private ArrayList<ObjectInterface> objects = new ArrayList<ObjectInterface>();
 
-	public LayoutPanel(DrawListener drawListener, JTextField status)
+	public LayoutPanel(ArrayList<ObjectInterface> objects, DrawListener drawListener, JTextField status)
 	{
 		setLayout(new BorderLayout());
 		

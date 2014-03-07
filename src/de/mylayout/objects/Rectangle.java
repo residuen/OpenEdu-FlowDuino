@@ -17,20 +17,26 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 	private float lineWidth = 1.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
-	
+	private int id = 0;
+
+	private String name = "Rectangle"; 
+			
 	private BasicStroke stroke = new BasicStroke(lineWidth);
 	
 	public BasicStroke getStroke() {
 		return stroke;
 	}
 
-	public Rectangle() {
+	public Rectangle(int id) {
 		super();
-		// TODO Auto-generated constructor stub
+		
+		this.id = id;
 	}
 
-	public Rectangle(double arg0, double arg1, double arg2, double arg3) {
+	public Rectangle(int id, double arg0, double arg1, double arg2, double arg3) {
 		super(arg0, arg1, arg2, arg3);
+		
+		this.id = id;
 	}
 
 	public void movePoint(int n, double x, double y)
@@ -101,6 +107,14 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 	public void deletePoint(int n) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

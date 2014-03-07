@@ -3,13 +3,18 @@ package de.mylayout.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import de.mylayout.interfaces.ObjectInterface;
 import de.mylayout.listener.DrawListener;
+import de.mylayout.listener.MenuListener;
+import de.mylayout.visu.ObjectPanel;
+import de.mylayout.visu.ObjectTablePanel;
 
 /**
  * Initialisiert wichtige Objekte
@@ -24,36 +29,26 @@ public class GuiBuilder
 		
 		HashMap<String, Component> inputComponents = new HashMap<String,Component>(); // Nimmt verschiedene Compontenten auf
 		
-//		ServerInfos serverInfos = new ServerInfos();	// Objekt, um Infos vom HTTP-Server zur Verfuegung zu stellen
-		
-		// Eingabe des GUI-Modus und der Server-IP, falls erforderlich
-//		Dialog inputDialog = new Dialog();
-		
-//		System.out.println("GuiMode="+inputDialog.getGuiMode());
-		
-//		inputComponents.put("guimode", new JTextField(""+inputDialog.getGuiMode()));	// Komponente mit GUI-Modus sichern
-//		inputComponents.put("serveradress", inputDialog.getIpAdress());					// Komponente mit Serveradresse sichern
+		ArrayList<ObjectInterface> objects = new ArrayList<ObjectInterface>();
 		
 		JLabel status = new JLabel();
 		status.setOpaque(true);
 		status.setForeground(Color.BLACK);
 		status.setBackground(Color.WHITE);
 		
-//		if(inputDialog.getGuiMode()==Dialog.CLIENT_MODE)
-//			status.setText("Client-name="+serverInfos.getServerName()+" Client-adress="+serverInfos.getServerIP()+" Client-cores="+serverInfos.getServerCores());
-//		else
-//			status.setText("Server-name="+serverInfos.getServerName()+" Server-adress="+serverInfos.getServerIP()+" Server-cores="+serverInfos.getServerCores());
+		ObjectTablePanel objectTable = new ObjectTablePanel(objects);
+		ObjectPanel objectPanel = new ObjectPanel(objects, objectTable);
+		
+		DrawListener drawListener = new DrawListener(objectTable);
+		MenuListener menuListener = new MenuListener(drawListener, objectTable); // inputComponents);
 
-//		inputDialog.dispose();
-//		inputDialog = null;
-		DrawListener drawListener = new DrawListener();
 		
 		MainFrame mainFrame = new MainFrame("OpenEdu-MyLayout");
 		mainFrame.getContentPane().setLayout(new BorderLayout());
 		
-		mainFrame.setJMenuBar(new MainMenu(drawListener));
+		mainFrame.setJMenuBar(new MainMenu(menuListener, objectTable, drawListener));
 		
-		MainPanel mainPanel = new MainPanel(drawListener, inputComponents);
+		MainPanel mainPanel = new MainPanel(objects, menuListener, drawListener, objectPanel, inputComponents);
 		
 		mainFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		mainFrame.getContentPane().add(status, BorderLayout.SOUTH);

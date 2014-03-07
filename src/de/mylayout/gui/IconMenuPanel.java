@@ -27,16 +27,16 @@ public class IconMenuPanel extends JPanel {
 	 * Komponenten Objekte beinhaltet (Textfelder, Checkboxen, usw.)
 	 * @param inputComponents
 	 */
-	public IconMenuPanel(DrawListener drawListener, HashMap<String, Component> inputComponents)
+	public IconMenuPanel(MenuListener menuListener, DrawListener drawListener, HashMap<String, Component> inputComponents)
 	{
-		initPanel(drawListener, inputComponents);
+		initPanel(menuListener, drawListener, inputComponents);
 	}
 
 	/**
 	 * Initialisierung des Panels mit Buttons und Icons fuer das Menue 
 	 * @param inputComponents
 	 */
-	private void initPanel(DrawListener drawListener, HashMap<String, Component> inputComponents)
+	private void initPanel(MenuListener menuListener, DrawListener drawListener, HashMap<String, Component> inputComponents)
 	{
 		setBackground(new Color(215, 215, 215));	// Hintergrundfarbe festlegen
 		
@@ -48,7 +48,7 @@ public class IconMenuPanel extends JPanel {
 		// GUI-Modus aus Componente lesen
 //		int guiMode = new Integer(((JTextField)inputComponents.get("guimode")).getText());
 		
-		MenuListener menuListener = new MenuListener(drawListener); //inputComponents);	// neuen MenuListener initialisieren
+//		MenuListener menuListener = new MenuListener(drawListener); //inputComponents);	// neuen MenuListener initialisieren
 
 		Box vBox = Box.createVerticalBox();			// Box-Container fuer vertikales Layout anlegen
 		Dimension dim = new Dimension(50, 50);	// Dimensions-Objekt fuer Groesse der Buttons

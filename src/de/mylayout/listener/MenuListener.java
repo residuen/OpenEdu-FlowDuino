@@ -17,19 +17,22 @@ import javax.swing.JToggleButton;
 
 import de.mylayout.gui.About;
 import de.mylayout.tools.PaintConstants;
+import de.mylayout.visu.ObjectTablePanel;
 
 public class MenuListener implements ActionListener, MouseListener
 {
 	private DrawListener drawListener = null;
+	private ObjectTablePanel objectTable = null;
 	
 	/**
 	 * Konstruktor bekommt HashMap mit Komponentenliste uebergeben
 	 * @param inputComponents
 	 */
-	public MenuListener(DrawListener drawListener) // HashMap<String,Component> inputComponents)
+	public MenuListener(DrawListener drawListener, ObjectTablePanel objectTable) // HashMap<String,Component> inputComponents)
 	{
 //		this.inputComponents = inputComponents;
 		this.drawListener = drawListener;
+		this.objectTable = objectTable;
 	}
 	
 	/**
@@ -56,7 +59,9 @@ public class MenuListener implements ActionListener, MouseListener
 			drawListener.setCatchMode( ((JToggleButton)(arg0.getSource())).isSelected());
 		
 		if(event.equals("pointer"))
+		{
 			drawListener.setMenuCLicked(PaintConstants.SEL_TOOL_POINTER);
+		}
 		else
 			if(event.equals("line"))
 			{

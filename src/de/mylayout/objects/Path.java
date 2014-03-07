@@ -22,7 +22,10 @@ public class Path implements ObjectInterface {
 	private float lineWidth = 2.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
-	
+	private int id = 0;
+
+	private String name = "Line"; 
+			
 	private GeneralPath gp = new GeneralPath();
 	
 	private ArrayList<double[]> points = new ArrayList<double[]>();
@@ -35,12 +38,15 @@ public class Path implements ObjectInterface {
 		return stroke;
 	}
 
-	public Path() {
+	public Path(int id) {
 		super();
-		// TODO Auto-generated constructor stub
+		
+		this.id = id;
 	}
 
-	public Path(double x1, double y1, double x2, double y2) {
+	public Path(int id, double x1, double y1, double x2, double y2) {
+		
+		this.id = id;
 		
 		double point[] = new double[2];
 		
@@ -60,7 +66,9 @@ public class Path implements ObjectInterface {
 //		gp.closePath();
 	}
 
-	public Path(Point2D p1, Point2D p2) {
+	public Path(int id, Point2D p1, Point2D p2) {
+		
+		this.id = id;
 		
 		double point[] = new double[2];
 		
@@ -261,6 +269,14 @@ public class Path implements ObjectInterface {
 		
 		for(int i=1; i<points.size(); i++)	// draw the lines
 			gp.lineTo(points.get(i)[0], points.get(i)[1]);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -18,7 +18,10 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 	private float lineWidth = 1.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
-	
+	private int id = 0;
+
+	private String name = "Circle"; 
+			
 //	java.awt.geom.GeneralPath
 	
 	private BasicStroke stroke = new BasicStroke(lineWidth);
@@ -27,12 +30,16 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 		return stroke;
 	}
 
-	public Circle() {
+	public Circle(int id) {
 		super();
+		
+		this.id = id;
 	}
 
-	public Circle(double arg0, double arg1, double arg2, double arg3) {
+	public Circle(int id, double arg0, double arg1, double arg2, double arg3) {
 		super(arg0, arg1, arg2, arg3, 0, 360, Arc2D.CHORD);
+		
+		this.id = id;
 	}
 
 	public void movePoint(int n, double x, double y)
@@ -97,6 +104,14 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 	@Override
 	public void setLineWidth(float lineWidth) {
 		this.lineWidth = lineWidth;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

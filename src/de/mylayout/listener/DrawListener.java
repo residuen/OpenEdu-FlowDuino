@@ -17,6 +17,7 @@ import de.mylayout.objects.Line;
 import de.mylayout.objects.Path;
 import de.mylayout.tools.PaintConstants;
 import de.mylayout.visu.DrawPanel;
+import de.mylayout.visu.ObjectTablePanel;
 
 public class DrawListener implements MouseListener, MouseMotionListener, MouseWheelListener {
 	
@@ -24,6 +25,8 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 
 	private JTextField status = null;
 	private ArrayList<ObjectInterface> objects = null;
+	
+	private ObjectTablePanel objectTable = null;
 	
 	private int objectTyp = PaintConstants.LINE_OBJECT;
 	private int menuCLicked = PaintConstants.SEL_TOOL_POINTER;
@@ -51,13 +54,14 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	
 	private double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 	
-	public DrawListener()
+	public DrawListener(ObjectTablePanel objectTable)
 	{
-		
+		this.objectTable = objectTable;
 	}
 
-	public DrawListener(JTextField status, ArrayList<ObjectInterface> objects, ObjectInterface catcherRect, DrawPanel comp)
+	public DrawListener(ObjectTablePanel objectTable, JTextField status, ArrayList<ObjectInterface> objects, ObjectInterface catcherRect, DrawPanel comp)
 	{
+		this.objectTable = objectTable;
 		this.status = status;
 		this.objects = objects;
 		this.catcherRect = catcherRect;
@@ -151,13 +155,13 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 
 		if(objectTyp == PaintConstants.LINE_OBJECT)
 		{
-			object = new Line(x1, y1, x2, y2);
+			object = new Line(objects.size()+1, x1, y1, x2, y2);
 			System.out.println("objectTyp="+objectTyp);
 		}
 		else
 			if(objectTyp == PaintConstants.PATH_OBJECT)
 			{
-				object = new Path(x1, y1, x2, y2);
+				object = new Path(objects.size()+1, x1, y1, x2, y2);
 				System.out.println("objectTyp="+objectTyp);
 			}
 			else
@@ -167,7 +171,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 				b = 10;
 				c = (a-b)/2;
 				
-				object = new Circle(x1-c, y1-c, b, b);
+				object = new Circle(objects.size()+1, x1-c, y1-c, b, b);
 				object.setLineWidth(2);
 				
 				mousePressed = false;
@@ -194,6 +198,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 			}
 		}
 		else
+		{
 			if(objectTyp == PaintConstants.LINE_OBJECT)
 			{
 				if(clickCounter==2)
@@ -207,34 +212,13 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 				mousePressed = false;
 				clickCounter = 0;
 			}
-
+		}
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		System.out.println("mouseDragged");
 		status.setText("mouseDragged");
-
-//		if(mousePressed)
-//		{
-//			x2 = arg0.getX();
-//			y2 = arg0.getY();
-//
-//			if(catchMode)
-//			{
-//				x2 = x2 - x2%25 + (int)(catcherRect.getBounds().getWidth())/2;
-//				y2 = y2 - y2%25 + (int)(catcherRect.getBounds().getHeight())/2;	
-//			}
-//			
-//			status.setText(mousePressed+" mouseDragged: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size());
-//			status.setText(status.getText()+" "+object.getBounds2D().getX() +" "+object.getBounds2D().getY()+" "+object.getBounds2D().getWidth()+" "+object.getBounds2D().getHeight());
-//			object.movePoint(2, x2, y2);
-//			
-//			moveCatcherRect(arg0);
-//			
-//			comp.repaint();
-//		}
-		
 	}
 
 	@Override
@@ -262,10 +246,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	}
 
 	@Override
-	public void mouseWheelMoved(MouseWheelEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseWheelMoved(MouseWheelEvent arg0) { }
 
 	public JTextField getStatus() {
 		return status;

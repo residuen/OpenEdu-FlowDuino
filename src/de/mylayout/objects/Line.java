@@ -18,22 +18,32 @@ public class Line extends Line2D.Double implements ObjectInterface {
 	
 	private int typ = PaintConstants.LINE_OBJECT;
 	
+	private int id = 0;
+
+	private String name = "Line"; 
+		
 	private BasicStroke stroke = new BasicStroke(lineWidth);
 	
 	public BasicStroke getStroke() {
 		return stroke;
 	}
 
-	public Line() {
+	public Line(int id) {
 		super();
+		
+		this.id = id;
 	}
 
-	public Line(double arg0, double arg1, double arg2, double arg3) {
+	public Line(int id, double arg0, double arg1, double arg2, double arg3) {
 		super(arg0, arg1, arg2, arg3);
+		
+		this.id = id;
 	}
 
-	public Line(Point2D arg0, Point2D arg1) {
+	public Line(int id, Point2D arg0, Point2D arg1) {
 		super(arg0, arg1);
+		
+		this.id = id;
 	}
 	
 	public void movePoint(int n, double x, double y)
@@ -105,6 +115,14 @@ public class Line extends Line2D.Double implements ObjectInterface {
 	public void deletePoint(int n) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
