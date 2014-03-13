@@ -3,9 +3,13 @@ package de.mylayout.lib;
 import java.io.File;
 import java.util.Arrays;
 
+import de.mylayout.tools.Xml;
+
 public class LibParser {
 	
-	File file = new File("H:\\workspace\\lib");
+	Xml xml = new Xml();
+	
+	File file = new File(xml.getElement("home"));
 	
 	String libs = "";
 	
@@ -24,8 +28,7 @@ public class LibParser {
 		{
 	        if (fileEntry.isDirectory())
 	        {
-	        	str = fileEntry.getName().replace(".lib","");
-	        	str = str.replace("_lib","");
+	        	str = fileEntry.getName(); //.replace(".lib","").replace("_lib","");
 //	        	System.out.println(str);
 	        	
 	        	libs += str +";";

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<hauptknoten>
+	<topic name="Schulseiten">
+		<url>http://www.wvs-koeln.de</url>
+		<url>http://www.berufskolleg-west.de</url>
+	</topic>
+	<topic name="Energie">
+       <content>
+       		<typ>Atomkraftwerk</typ>
+       		<quelle>Uran</quelle>
+       </content>
+       <content>
+       		<typ>Batterie</typ>
+       		<quelle>Zink-Kohle</quelle>
+       </content>
+    </topic>
+    <topic name="Personen">
+		<person alter="22" geschlecht="m">Felix Becker</person>
+		<person alter="30" geschlecht="w">Helene Fishburger</person>
+	</topic>
+ </hauptknoten>

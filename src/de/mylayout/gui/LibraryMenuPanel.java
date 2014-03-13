@@ -56,17 +56,17 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		
 		add(library, BorderLayout.NORTH);
 		
-		JPanel panel = null;
-		JToggleButton button = null;
+//		JPanel panel = null;
+//		JToggleButton button = null;
 		
 		// GUI-Modus aus Componente lesen
 //		int guiMode = new Integer(((JTextField)inputComponents.get("guimode")).getText());
 		
 //		MenuListener menuListener = new MenuListener(inputComponents);	// neuen MenuListener initialisieren
 
-		Box vBox = Box.createVerticalBox();			// Box-Container fuer vertikales Layout anlegen
-		Dimension dim = new Dimension(100, 80);	// Dimensions-Objekt fuer Groesse der Buttons
-		Font font = new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 12);	// Schriftart- und Grad festlegen
+//		Box vBox = Box.createVerticalBox();			// Box-Container fuer vertikales Layout anlegen
+//		Dimension dim = new Dimension(100, 80);	// Dimensions-Objekt fuer Groesse der Buttons
+//		Font font = new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 12);	// Schriftart- und Grad festlegen
 
 		/*
 		 *  Erzeugen der Buttons
