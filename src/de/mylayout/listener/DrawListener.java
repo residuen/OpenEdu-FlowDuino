@@ -1,6 +1,5 @@
 package de.mylayout.listener;
 
-import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

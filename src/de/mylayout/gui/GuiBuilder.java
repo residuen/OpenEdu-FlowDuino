@@ -11,6 +11,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import de.mylayout.interfaces.ObjectInterface;
+import de.mylayout.lib.LibParser;
 import de.mylayout.listener.DrawListener;
 import de.mylayout.listener.MenuListener;
 import de.mylayout.visu.ObjectPanel;
@@ -26,6 +27,13 @@ public class GuiBuilder
 	public GuiBuilder()
 	{
 		initLookAndFeel();	// Setzen des Look & Feels
+		
+		LibParser lp = new LibParser();	// Testen des KiCad-parsers
+//		lp.parse();
+//		for(String s : lp.getLibList())
+//		{
+//			System.out.println(s);
+//		}
 		
 		HashMap<String, Component> inputComponents = new HashMap<String,Component>(); // Nimmt verschiedene Compontenten auf
 		

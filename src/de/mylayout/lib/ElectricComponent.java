@@ -5,7 +5,6 @@
 
 package de.mylayout.lib;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 import de.mylayout.interfaces.ObjectInterface;

@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
+import de.mylayout.lib.LibParser;
+
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;
 
@@ -44,7 +46,12 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		setBackground(new Color(215, 215, 215));	// Hintergrundfarbe festlegen
 		setLayout(new BorderLayout());
 		
-		JComboBox library = new JComboBox(new String[] { "Passive Bauteile", "Aktive Bauteile", "Optoelektonik", "ICs" } );
+		LibParser lp = new LibParser();	// Testen des KiCad-parsers
+			
+		String libList[] = lp.getLibList();
+		
+//		JComboBox library = new JComboBox(new String[] { "Passive Bauteile", "Aktive Bauteile", "Optoelektonik", "ICs" } );
+		JComboBox library = new JComboBox(libList);
 		library.addActionListener(this);
 		
 		add(library, BorderLayout.NORTH);

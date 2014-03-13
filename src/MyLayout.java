@@ -1,13 +1,9 @@
-import javax.swing.JOptionPane;
-
 import de.mylayout.gui.GuiBuilder;
 
-//import de.virtualprocessmanagement.tools.Dialog;
-
 /*
-OpenEdu-VirtualWarehouseManager: Grafische Darstellung von Warenhaus-Logistik-Ablaeufen
+OpenEdu-Mylayout: Ein einfache Programm fuer Leiterplatten-Layouts
 
-Copyright (C) 2010 Karsten Bettray
+Copyright (C) 2014 Karsten Blauel
 
 Dieses Programm ist freie Software. Sie koennen es unter den Bedingungen der GNU General Public License,
 wie von der Free Software Foundation veroeffentlicht, weitergeben und/oder modifizieren, entweder gemaess
@@ -21,7 +17,6 @@ Falls nicht, siehe <http://www.gnu.org/licenses/>.
 
 public class MyLayout
 {
-
 	public MyLayout()
 	{
 		System.out.println("user.home="+System.getProperty("user.home"));
