@@ -51,7 +51,7 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		String libList[] = lp.getLibList();
 		
 //		JComboBox library = new JComboBox(new String[] { "Passive Bauteile", "Aktive Bauteile", "Optoelektonik", "ICs" } );
-		JComboBox library = new JComboBox(libList);
+		JComboBox<String> library = new JComboBox<String>(libList);
 		library.addActionListener(this);
 		
 		add(library, BorderLayout.NORTH);

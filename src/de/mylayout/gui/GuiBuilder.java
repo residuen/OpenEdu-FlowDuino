@@ -27,14 +27,7 @@ public class GuiBuilder
 	public GuiBuilder()
 	{
 		initLookAndFeel();	// Setzen des Look & Feels
-		
-		LibParser lp = new LibParser();	// Testen des KiCad-parsers
-//		lp.parse();
-//		for(String s : lp.getLibList())
-//		{
-//			System.out.println(s);
-//		}
-		
+				
 		HashMap<String, Component> inputComponents = new HashMap<String,Component>(); // Nimmt verschiedene Compontenten auf
 		
 		ArrayList<ObjectInterface> objects = new ArrayList<ObjectInterface>();

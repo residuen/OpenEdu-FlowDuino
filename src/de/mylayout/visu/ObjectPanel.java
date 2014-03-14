@@ -31,15 +31,15 @@ public class ObjectPanel extends JPanel {
 		
 		vBox.add(objectTable);
 		
-		JLabel l;
-		for(int i=0; i<3; i++)
-		{
-			l = new JLabel(""+i);
-			l.setOpaque(true);
-			setBackground(Color.LIGHT_GRAY);
-			vBox.add(l);
-			vBox.add(Box.createVerticalStrut(2));
-		}
+//		JLabel l;
+//		for(int i=0; i<3; i++)
+//		{
+//			l = new JLabel(""+i);
+//			l.setOpaque(true);
+//			setBackground(Color.LIGHT_GRAY);
+//			vBox.add(l);
+//			vBox.add(Box.createVerticalStrut(2));
+//		}
 
 	}
 

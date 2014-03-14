@@ -24,5 +24,10 @@ public interface ObjectInterface extends Shape {
 	public void deletePoint(int n);
 	
 	public Shape getShape();
-
+	
+	public String getName();
+	public void setName(String name);
+	
+	public int getId();
+	public void setId(int id);
 }

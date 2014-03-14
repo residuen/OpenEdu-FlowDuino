@@ -19,12 +19,12 @@ public class Path implements ObjectInterface {
 	private Color lineColor = Color.BLUE;
 	private Color fillColor = Color.white;
 	
-	private float lineWidth = 2.0f;
+	private float lineWidth = 3.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
 	private int id = 0;
 
-	private String name = "Line"; 
+	private String name = "path"; 
 			
 	private GeneralPath gp = new GeneralPath();
 	
@@ -279,4 +279,11 @@ public class Path implements ObjectInterface {
 		this.name = name;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

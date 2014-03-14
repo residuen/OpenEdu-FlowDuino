@@ -14,7 +14,7 @@ public class Line extends Line2D.Double implements ObjectInterface {
 	private Color lineColor = Color.GREEN;
 	private Color fillColor = Color.white;
 	
-	private float lineWidth = 2.0f;
+	private float lineWidth = 3.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
 	
@@ -125,4 +125,11 @@ public class Line extends Line2D.Double implements ObjectInterface {
 		this.name = name;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

@@ -126,6 +126,10 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		
 		double a=0, b=0, c=0;
 		
+		int objectsCount = -1;
+		
+		objectsCount = objects.size();
+		
 		x1 = arg0.getX();
 		y1 = arg0.getY();
 		
@@ -152,7 +156,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		
 		System.out.println("mousePressed: clickCounter="+clickCounter+" selectedCell="+previousSelectedCell.getX()+","+previousSelectedCell.getY()+" lastSelectedCell="+currentSelectedCell.getX()+","+currentSelectedCell.getY());
 
-		if(objectTyp == PaintConstants.LINE_OBJECT)
+		if(objectTyp == PaintConstants.LINE_OBJECT && clickCounter==1)
 		{
 			object = new Line(objects.size()+1, x1, y1, x2, y2);
 			System.out.println("objectTyp="+objectTyp);
@@ -160,28 +164,38 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		else
 			if(objectTyp == PaintConstants.PATH_OBJECT)
 			{
-				object = new Path(objects.size()+1, x1, y1, x2, y2);
+				if(clickCounter==1)
+					object = new Path(objects.size()+1, x1, y1, x2, y2);
+				else
+					object.addPoint(x2, y2);
+				
 				System.out.println("objectTyp="+objectTyp);
 			}
 			else
-//			if(objectTyp == PaintConstants.CIRCLE_OBJECT)
-			{
-				a = catcherRect.getBounds().getWidth();
-				b = 10;
-				c = (a-b)/2;
-				
-				object = new Circle(objects.size()+1, x1-c, y1-c, b, b);
-				object.setLineWidth(2);
-				
-				mousePressed = false;
-			}
+				if(objectTyp == PaintConstants.CIRCLE_OBJECT && clickCounter==1)
+				{
+					a = catcherRect.getBounds().getWidth();
+					b = 10;
+					c = (a-b)/2;
+					
+					object = new Circle(objects.size()+1, x1-c, y1-c, b, b);
+					object.setLineWidth(2);
+
+					System.out.println("objectTyp="+objectTyp);
+					
+					mousePressed = false;
+				}
 		
-		objects.add(object);
+		if(clickCounter==1)
+			objects.add(object);
+		
+		objectTable.update(object);
 		
 		comp.repaint();
 
 		status.setText("mousePressed: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size()+" angelegt");
-		System.out.println("mousePressed: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size()+" angelegt");
+//		System.out.println("mousePressed: x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2+" -> Object Nr. "+objects.size()+" angelegt");
+		System.out.println("objects.size()="+objects.size());
 	}
 
 	@Override

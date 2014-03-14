@@ -14,7 +14,7 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 	private Color lineColor = Color.black;
 	private Color fillColor = Color.white;
 	
-	private float lineWidth = 1.0f;
+	private float lineWidth = 5.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
 	private int id = 0;
@@ -117,4 +117,11 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 		this.name = name;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
