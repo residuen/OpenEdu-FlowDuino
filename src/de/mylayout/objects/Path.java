@@ -179,6 +179,8 @@ public class Path implements ObjectInterface {
 	@Override
 	public void setLineWidth(float lineWidth) {
 		this.lineWidth = lineWidth;
+		
+		this.stroke = new BasicStroke(lineWidth);
 	}
 	
 	@Override

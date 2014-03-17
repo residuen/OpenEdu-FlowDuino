@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,7 +29,10 @@ public class ObjectTablePanel extends JPanel {
 		this.objects = objects;
 		
 		setLayout(new BorderLayout());
-//		setLayout(new GridLayout(1,2));
+		
+		
+//		vBoxL.setBorder(BorderFactory.createLineBorder(java.awt.Color.GRAY, 1));
+//		vBoxR.setBorder(BorderFactory.createBevelBorder(1));
 		
 		JPanel p = new JPanel(new GridLayout(1,2));
 		

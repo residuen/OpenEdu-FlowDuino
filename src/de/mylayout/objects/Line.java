@@ -103,6 +103,8 @@ public class Line extends Line2D.Double implements ObjectInterface {
 	@Override
 	public void setLineWidth(float lineWidth) {
 		this.lineWidth = lineWidth;
+		
+		this.stroke = new BasicStroke(lineWidth);
 	}
 
 	@Override

@@ -54,7 +54,7 @@ public class MainPanel extends JPanel
 		mdiFrame.add(lp);
 		
 		ObjectListPanel olp = new ObjectListPanel(objects, objectPanel);
-		olp.setSize(160, 480);
+		olp.setSize(160, 240);
 		olp.setLocation(640, 0);
 		olp.setResizable(true);
 		olp.setVisible(true);

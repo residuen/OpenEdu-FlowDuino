@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
@@ -32,6 +33,8 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	
 	private boolean gridMode = true;
 	
+	private boolean antialiasing = true;
+	
 	public DrawPanel(DrawListener drawListener, ArrayList<ObjectInterface> objects, JTextField status)
 	{
 		this.objects = objects;
@@ -54,12 +57,13 @@ public class DrawPanel extends JPanel implements ComponentListener {
 		
 		Graphics2D g2d = (Graphics2D)g;
 		
+		if(antialiasing)
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		if(resized)
 			drawGrid(zoom);
 		
 		g2d.drawImage(img, 0,0, this);
-		
-		g2d.setStroke(new BasicStroke(2));
 		
 		for(ObjectInterface o : objects)
 		{
@@ -69,7 +73,6 @@ public class DrawPanel extends JPanel implements ComponentListener {
 		}
 		
 		g2d.setStroke(new BasicStroke(1));
-		
 		g2d.setColor(Color.BLACK);
 		g2d.draw(catcherRect);
 	}

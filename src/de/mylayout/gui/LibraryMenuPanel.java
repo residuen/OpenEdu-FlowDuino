@@ -50,72 +50,15 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 			
 		String libList[] = lp.getLibList();
 		
-//		JComboBox library = new JComboBox(new String[] { "Passive Bauteile", "Aktive Bauteile", "Optoelektonik", "ICs" } );
 		JComboBox<String> library = new JComboBox<String>(libList);
 		library.addActionListener(this);
 		
 		add(library, BorderLayout.NORTH);
-		
-//		JPanel panel = null;
-//		JToggleButton button = null;
-		
-		// GUI-Modus aus Componente lesen
-//		int guiMode = new Integer(((JTextField)inputComponents.get("guimode")).getText());
-		
-//		MenuListener menuListener = new MenuListener(inputComponents);	// neuen MenuListener initialisieren
-
-//		Box vBox = Box.createVerticalBox();			// Box-Container fuer vertikales Layout anlegen
-//		Dimension dim = new Dimension(100, 80);	// Dimensions-Objekt fuer Groesse der Buttons
-//		Font font = new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 12);	// Schriftart- und Grad festlegen
-
-		/*
-		 *  Erzeugen der Buttons
-		 *  und zusammensetzen
-		 *  des MenuPanels
-		 */
-		
-		
-		
-		// Starten der Visualisierung
-//		panel = new JPanel(new GridLayout(1, 1));
-//		button = new JToggleButton("<html>Linie<br/>zeichnen</html>",
-//				new ImageIcon(getClass().getResource("/de/mylayout/images/icons/x-office-presentation.png")));
-//		button.setFont(font);
-//		button.setToolTipText("Zeichnen einer Linie oder Leitung");
-//		button.setName("line");
-//		inputComponents.put(button.getName(), button);
-//		button.setHorizontalTextPosition(SwingConstants.CENTER);
-//		button.setVerticalTextPosition(SwingConstants.BOTTOM);
-//		button.setPreferredSize(dim);
-//		button.setMinimumSize(dim);
-////		button.addActionListener(menuListener);
-//		panel.add(button);
-//		vBox.add(panel);
-//		vBox.add(Box.createVerticalStrut(5));
-//		
-//		panel = new JPanel(new GridLayout(1, 1));
-//		button = new JToggleButton("<html>Pfad<br/>zeichnen</html>",
-//				new ImageIcon(getClass().getResource("/de/mylayout/images/icons/preferences-system.png")));
-//		button.setFont(font);
-//		button.setToolTipText("<html>Einen Pfad zeichnen</html>");
-//		button.setName("path");
-//		inputComponents.put(button.getName(), button);
-//		button.setHorizontalTextPosition(SwingConstants.CENTER);
-//		button.setVerticalTextPosition(SwingConstants.BOTTOM);
-//		button.setPreferredSize(dim);
-//		button.setMinimumSize(dim);
-////		button.addActionListener(menuListener);
-//		panel.add(button);
-//		vBox.add(panel);
-//		vBox.add(Box.createVerticalStrut(5));
-//
-//		add(vBox);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-//		System.out.println(arg0.getActionCommand());
-		System.out.println(((JComboBox)arg0.getSource()).getSelectedItem().toString());
+		System.out.println(((JComboBox<String>)arg0.getSource()).getSelectedItem().toString());
 		
 	}
 }
