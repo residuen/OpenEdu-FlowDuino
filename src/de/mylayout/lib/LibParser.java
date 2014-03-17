@@ -57,14 +57,14 @@ public class LibParser {
 		{
 	        if (fileEntry.isDirectory())
 	        {
-//	        	System.out.println("\t"+fileEntry.getName());
+	        	System.out.println("\t"+fileEntry.getName());
 	        	
 	        	libs += fileEntry.getName()+";";
 	        	
 	        	for (File fileEntry2 : fileEntry.listFiles())
 	        	{
 	    	        if (fileEntry2.isFile() && fileEntry2.getName().endsWith(".lib")) {
-//	    	        	System.out.println("\t\t"+fileEntry2.getAbsolutePath());
+	    	        	System.out.println("\t\t"+fileEntry2.getAbsolutePath());
 	    	        }
 	        	}
 	        } 

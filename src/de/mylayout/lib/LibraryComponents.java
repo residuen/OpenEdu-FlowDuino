@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import de.mylayout.interfaces.ObjectInterface;
 
-public class ElectricComponent {
+public class LibraryComponents {
 	
 	private int id;
 	

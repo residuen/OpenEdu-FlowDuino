@@ -35,6 +35,8 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 	public LibraryMenuPanel(HashMap<String, Component> inputComponents)
 	{
 		initPanel(inputComponents);
+		
+		initElectricComponents();
 	}
 
 	/**
@@ -54,6 +56,13 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		library.addActionListener(this);
 		
 		add(library, BorderLayout.NORTH);
+	}
+	
+	private void initElectricComponents()
+	{
+		LibParser lp = new LibParser();
+		
+		
 	}
 
 	@Override
