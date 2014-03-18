@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import de.mylayout.interfaces.ObjectInterface;
 import de.mylayout.objects.Circle;
+import de.mylayout.objects.Line;
 
 public class LibraryComponent {
 	
@@ -52,8 +53,11 @@ public class LibraryComponent {
 					if(line.contains("DEF "))
 						 parseDEF(line);
 					else
-						if(line.contains("X "))	// Kontakt erzeugen
+						if(line.contains("X ") && !line.contains("ALIAS "))	// Kontakt erzeugen
 							parseX(line);
+						else
+							if(line.contains("S ") && !line.contains("ALIAS "))	// Kontakt erzeugen
+								parseS(line);
 					
 //					System.out.println(line);
 				}
@@ -101,4 +105,41 @@ public class LibraryComponent {
 		System.out.println("Pin-Name: "+name+" id="+id+" x="+x+" y="+y+" length="+length);
 	}
 
+	private void parseS(String line)
+	{
+		Line c = null;
+		
+		int id;
+		double x1, y1, x2, y2, b, h;
+		
+		String split[] = line.split(" ");
+		System.out.println("split[1]="+split[1]);
+		
+//		setName(split[1]);
+		
+//		id = Integer.parseInt(split[2]);
+		x1 = Double.parseDouble(split[1]) / 10;
+		y1 = Double.parseDouble(split[2]) / 10;
+		x2 = Double.parseDouble(split[3]) / 10;
+		y2 = Double.parseDouble(split[4]) / 10;
+		b = x2 - x1;
+		h = y2 - y1;
+		
+		if(x1 < minX) minX = x1;
+		if(y1 < minY) minY = y1;
+		if(x1 > maxX) maxX = x1;
+		if(y1 > maxY) maxY = y1;
+
+		if(x2 < minX) minX = x2;
+		if(y2 < minY) minY = y2;
+		if(x2 > maxX) maxX = x2;
+		if(y2 > maxY) maxY = y2;
+
+		c = new Line(0, x1, y1, b, h);
+		c.setFill(true);
+		
+		objects.add(c);
+		
+		System.out.println("Rect-Name: "+name+" x1="+x1+" y1="+y1+" b="+b+" h="+h);
+	}
 }
