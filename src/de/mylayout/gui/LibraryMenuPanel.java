@@ -27,6 +27,8 @@ import de.mylayout.lib.LibReader;
 
 public class LibraryMenuPanel extends JPanel implements ActionListener {
 	
+	private LibReader libraryReader = null;
+	
 	/**
 	 * Der Konstruktor erhaelt die HashMap, welche verschiedene
 	 * Komponenten Objekte beinhaltet (Textfelder, Checkboxen, usw.)
@@ -60,9 +62,9 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 	
 	private void initElectricComponents()
 	{
-		LibReader lp = new LibReader();
+		libraryReader = new LibReader();
 		
-		lp.parse();
+		libraryReader.parse();
 	}
 
 	@Override

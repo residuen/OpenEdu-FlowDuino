@@ -15,6 +15,8 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 	private Color lineColor = Color.RED;
 	private Color fillColor = Color.white;
 	
+	private boolean fill = false;
+	
 	private float lineWidth = 3.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
@@ -122,5 +124,13 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public boolean isFill() {
+		return fill;
+	}
+
+	public void setFill(boolean fill) {
+		this.fill = fill;
 	}
 }

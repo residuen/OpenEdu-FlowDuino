@@ -8,11 +8,13 @@ import de.mylayout.tools.Xml;
 
 public class LibReader {
 	
-	Xml xml = new Xml();
+	private Xml xml = new Xml();
 	
-	File file = new File(xml.getElement("home"));
+	private File file = new File(xml.getElement("home"));
 	
-	String libs = "";
+	private String libs = "";
+	
+	private Library library = null;
 	
 	public LibReader()
 	{
@@ -81,9 +83,12 @@ public class LibReader {
 		
 		String fileLines[] = fh.getTextLines(file);
 		
-		Library lc = new Library();
-		lc.setName(libName);
-		lc.buildLibrary(fileLines);
+		library = new Library();
+		library.setName(libName);
+		library.buildLibrary(fileLines);
 	}
 	
+	public Library getLibrary() {
+		return library;
+	}
 }

@@ -30,4 +30,7 @@ public interface ObjectInterface extends Shape {
 	
 	public int getId();
 	public void setId(int id);
+	
+	public boolean isFill();
+	public void setFill(boolean fill);
 }
