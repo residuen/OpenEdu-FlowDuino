@@ -7,8 +7,6 @@ package de.mylayout.lib;
 
 import java.util.ArrayList;
 
-import de.mylayout.interfaces.ObjectInterface;
-
 public class Library {
 	
 	private int id;
@@ -19,49 +17,40 @@ public class Library {
 	
 	public void buildLibrary(final String[] data)
 	{
-//		new Thread()
-//		{ 
-//			public void run ()
-//			{
-				LibraryComponent lc = new LibraryComponent();
+		LibraryComponent lc = new LibraryComponent();
+		
+		System.out.println("\n***** "+getName()+" *****");
+		
+		// Start des neuen Objektes suchen
+		for(String s : data)
+		{	
+			// Anfang suchen und neues Objekt erzeugen
+			if(s.contains("DEF") && !s.contains("ENDDEF") && !lc.isReady())
+			{
+//				System.out.println(s);
+				lc = new LibraryComponent();
+				pins.add(lc);
+				lc.setReady(true);
+				lc.addLine(s);
 				
-				// Start des neuen Objektes suchen
-				for(String s : data)
-				{	
-					if(s.contains("DEF") && !s.contains("ENDDEF"))
-					{
-						System.out.println(s);
-						lc = new LibraryComponent();
-						pins.add(lc);
-						lc.setReady(true);
-						lc.addLine(s);
-					}
-					
-					// Objektinfos auslesen
-					if(lc.isReady())
-					{
-						System.out.println(s);
-						lc.addLine(s);
-					}
-					
-					// Ende markieren
-					if(s.toLowerCase().contains("#End Library") && lc.isReady())
-					{
-						System.out.println(s);
-						lc.addLine(s);
-						lc.setReady(false);
-					}
+				continue;
+			}
+			
+			// Objektinfos auslesen
+			if(lc.isReady())
+			{
+//				System.out.println(s);
+				lc.addLine(s);
+				
+				// Ende markieren
+				if(s.toLowerCase().contains("#end library"))
+				{
+					lc.setReady(false);
+					lc.build();	// Build-Prozess starten
 				}
-//			}
-//		}.start();
+			}
+		}
 	}
-	
-//	private void ParseDEF(LibraryComponent lc, String line)
-//	{
-//		String split[] = line.split(" ");
-//		
-//		lc.setName(split[1]);
-//	}
 
 	public int getId() {
 		return id;

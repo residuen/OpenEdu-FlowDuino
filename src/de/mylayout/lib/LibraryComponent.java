@@ -34,5 +34,31 @@ public class LibraryComponent {
 	{
 		libLines.add(line);
 	}
+	
+	public void build()
+	{
+//		new Thread()
+//		{ 
+//			public void run ()
+			{
+				for(String line : libLines)
+				{
+					if(line.contains("DEF "))
+						 ParseDEF(line);
+					
+//					System.out.println(line);
+				}
+			}
+//		}.start();
+	}
+	
+	private void ParseDEF(String line)
+	{
+		String split[] = line.split(" ");
+		
+		setName(split[1]);
+		
+		System.out.println("mein Name ist "+getName());
+	}
 
 }

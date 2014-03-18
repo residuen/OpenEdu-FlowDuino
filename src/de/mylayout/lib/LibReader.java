@@ -58,7 +58,7 @@ public class LibReader {
 		{
 	        if (fileEntry.isDirectory())
 	        {
-	        	System.out.println("\n\n\n\n***** "+fileEntry.getName()+" *****");
+//	        	System.out.println("\n\n\n\n***** "+fileEntry.getName()+" *****");
 	        	
 	        	libs += fileEntry.getName()+";";
 	        	
