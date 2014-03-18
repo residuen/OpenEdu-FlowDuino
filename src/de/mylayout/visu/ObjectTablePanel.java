@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 
 import de.mylayout.interfaces.ObjectInterface;
 
@@ -29,7 +31,6 @@ public class ObjectTablePanel extends JPanel {
 		this.objects = objects;
 		
 		setLayout(new BorderLayout());
-		
 		
 //		vBoxL.setBorder(BorderFactory.createLineBorder(java.awt.Color.GRAY, 1));
 //		vBoxR.setBorder(BorderFactory.createBevelBorder(1));
@@ -75,6 +76,7 @@ public class ObjectTablePanel extends JPanel {
 		vBoxL.add(createTextField("linecolor", false));
 		tf = createTextField("", false);
 		tf.setBackground(object.getLineColor());
+//		tf.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 0, 0), new EtchedBorder()));
 		vBoxR.add(tf, true);
 		vBoxL.add(createTextField("linewidth", false));
 		vBoxR.add(createTextField(""+object.getLineWidth(), true));
@@ -90,6 +92,8 @@ public class ObjectTablePanel extends JPanel {
 		
 		tf.setEditable(editable);
 		tf.setText(text);
+		tf.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 0, 0), new EtchedBorder()));
+
 		
 		return tf;
 	}

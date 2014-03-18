@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import de.mylayout.lib.LibParser;
+import de.mylayout.lib.LibReader;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;
@@ -48,7 +48,7 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		setBackground(new Color(215, 215, 215));	// Hintergrundfarbe festlegen
 		setLayout(new BorderLayout());
 		
-		LibParser lp = new LibParser();	// Testen des KiCad-parsers
+		LibReader lp = new LibReader();	// Testen des KiCad-parsers
 			
 		String libList[] = lp.getLibList();
 		
@@ -60,9 +60,9 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 	
 	private void initElectricComponents()
 	{
-		LibParser lp = new LibParser();
+		LibReader lp = new LibReader();
 		
-		
+		lp.parse();
 	}
 
 	@Override

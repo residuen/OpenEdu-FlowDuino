@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.lib.LibParser;
+import de.mylayout.lib.LibReader;
 import de.mylayout.listener.DrawListener;
 import de.mylayout.listener.MenuListener;
 import de.mylayout.visu.ObjectPanel;

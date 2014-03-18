@@ -3,9 +3,10 @@ package de.mylayout.lib;
 import java.io.File;
 import java.util.Arrays;
 
+import de.mylayout.tools.FileHandler;
 import de.mylayout.tools.Xml;
 
-public class LibParser {
+public class LibReader {
 	
 	Xml xml = new Xml();
 	
@@ -13,7 +14,7 @@ public class LibParser {
 	
 	String libs = "";
 	
-	public LibParser()
+	public LibReader()
 	{
 		
 	}
@@ -57,14 +58,15 @@ public class LibParser {
 		{
 	        if (fileEntry.isDirectory())
 	        {
-	        	System.out.println("\t"+fileEntry.getName());
+	        	System.out.println("\n\n\n\n***** "+fileEntry.getName()+" *****");
 	        	
 	        	libs += fileEntry.getName()+";";
 	        	
 	        	for (File fileEntry2 : fileEntry.listFiles())
 	        	{
 	    	        if (fileEntry2.isFile() && fileEntry2.getName().endsWith(".lib")) {
-	    	        	System.out.println("\t\t"+fileEntry2.getAbsolutePath());
+//	    	        	System.out.println("\t\t"+fileEntry2.getAbsolutePath());
+	    	        	importData(fileEntry.getName(), fileEntry2);
 	    	        }
 	        	}
 	        } 
@@ -72,4 +74,16 @@ public class LibParser {
 		
 //		System.out.println(libs.substring(0, libs.length()-1));
 	}
+	
+	private void importData(String libName, File file)
+	{
+		FileHandler fh = new FileHandler();
+		
+		String fileLines[] = fh.getTextLines(file);
+		
+		Library lc = new Library();
+		lc.setName(libName);
+		lc.buildLibrary(fileLines);
+	}
+	
 }
