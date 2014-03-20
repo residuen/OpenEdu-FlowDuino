@@ -13,9 +13,17 @@ public class LibraryButton extends JButton {
 	
 	private ArrayList<ObjectInterface> objects = null;
 
+	private double minX, minY;
+
 	public LibraryButton(ArrayList<ObjectInterface> objects)
 	{
 		this.objects = objects;
+	}
+	
+	public void setMinValues(double x, double y)
+	{
+		minX = x;
+		minY = y;
 	}
 	
 	public void paintComponent(Graphics g)

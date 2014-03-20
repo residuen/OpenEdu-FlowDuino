@@ -19,6 +19,7 @@ public class LibraryComponent {
 	private String name = null;
 	
 	private double minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
+
 	private double maxX = Integer.MIN_VALUE, maxY = Integer.MIN_VALUE;
 	
 	public String getName() {
@@ -65,7 +66,8 @@ public class LibraryComponent {
 				libLines.clear();
 			}
 //		}.start();
-	}
+			
+			libraryButton.setMinValues(minX, minY);	}
 	
 	private void parseDEF(String line)
 	{
@@ -109,7 +111,7 @@ public class LibraryComponent {
 	{
 		Line c = null;
 		
-		int id;
+//		int id;
 		double x1, y1, x2, y2, b, h;
 		
 		String split[] = line.split(" ");
@@ -136,10 +138,22 @@ public class LibraryComponent {
 		if(y2 > maxY) maxY = y2;
 
 		c = new Line(0, x1, y1, b, h);
-		c.setFill(true);
+//		c.setFill(true);
 		
 		objects.add(c);
 		
 		System.out.println("Rect-Name: "+name+" x1="+x1+" y1="+y1+" b="+b+" h="+h);
+	}
+
+	public double getMinX() {
+		return minX;
+	}
+
+	public double getMinY() {
+		return minY;
+	}
+
+	public LibraryButton getLibraryButton() {
+		return libraryButton;
 	}
 }

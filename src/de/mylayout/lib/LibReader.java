@@ -1,6 +1,7 @@
 package de.mylayout.lib;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import de.mylayout.tools.FileHandler;
@@ -14,7 +15,9 @@ public class LibReader {
 	
 	private String libs = "";
 	
-	private Library library = null;
+//	private Library library = null;
+	
+	private ArrayList<Library> librarys = new ArrayList<Library>();
 	
 	public LibReader()
 	{
@@ -83,12 +86,14 @@ public class LibReader {
 		
 		String fileLines[] = fh.getTextLines(file);
 		
-		library = new Library();
+		Library library = new Library();
 		library.setName(libName);
 		library.buildLibrary(fileLines);
+		
+		librarys.add(library);
 	}
 	
-	public Library getLibrary() {
-		return library;
+	public ArrayList<Library> getLibrary() {
+		return librarys;
 	}
 }
