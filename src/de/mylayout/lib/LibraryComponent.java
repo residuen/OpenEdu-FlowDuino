@@ -18,8 +18,9 @@ public class LibraryComponent {
 	
 	private String name = null;
 	
+//	private double minX = 0, minY = 0;
+//	private double maxX = 0, maxY = 0;
 	private double minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
-
 	private double maxX = Integer.MIN_VALUE, maxY = Integer.MIN_VALUE;
 	
 	public String getName() {
@@ -28,6 +29,8 @@ public class LibraryComponent {
 
 	public void setName(String name) {
 		this.name = name;
+		
+		libraryButton.setName(name);
 	}
 
 	public boolean isReady() {
@@ -48,7 +51,7 @@ public class LibraryComponent {
 //		new Thread()
 //		{ 
 //			public void run ()
-			{
+//			{
 				for(String line : libLines)
 				{
 					if(line.contains("DEF "))
@@ -63,11 +66,16 @@ public class LibraryComponent {
 //					System.out.println(line);
 				}
 				
-				libLines.clear();
-			}
+				libLines.clear();	// Bibliotheksdaten (Strings) loeschen
+				libraryButton.setMinX(minX);
+				libraryButton.setMinY(minY);
+				libraryButton.setMaxX(maxX);
+				libraryButton.setMaxY(maxY);
+//				libraryButton.setMinValues(minX, minY);
+//				libraryButton.setMaxValues(maxX, maxY);
+//			}
 //		}.start();
-			
-			libraryButton.setMinValues(minX, minY);	}
+	}
 	
 	private void parseDEF(String line)
 	{
@@ -90,9 +98,9 @@ public class LibraryComponent {
 		setName(split[1]);
 		
 		id = Integer.parseInt(split[2]);
-		x = Double.parseDouble(split[3]) / 10;
-		y = Double.parseDouble(split[4]) / 10;
-		length = Double.parseDouble(split[5]) / 10;
+		x = Double.parseDouble(split[3]) / 10d;
+		y = Double.parseDouble(split[4]) / 10d;
+		length = Double.parseDouble(split[5]) / 10d;
 		
 		if(x < minX) minX = x;
 		if(y < minY) minY = y;
@@ -115,15 +123,15 @@ public class LibraryComponent {
 		double x1, y1, x2, y2, b, h;
 		
 		String split[] = line.split(" ");
-		System.out.println("split[1]="+split[1]);
+//		System.out.println("split[1]="+split[1]);
 		
 //		setName(split[1]);
 		
 //		id = Integer.parseInt(split[2]);
-		x1 = Double.parseDouble(split[1]) / 10;
-		y1 = Double.parseDouble(split[2]) / 10;
-		x2 = Double.parseDouble(split[3]) / 10;
-		y2 = Double.parseDouble(split[4]) / 10;
+		x1 = Double.parseDouble(split[1]) / 10d;
+		y1 = Double.parseDouble(split[2]) / 10d;
+		x2 = Double.parseDouble(split[3]) / 10d;
+		y2 = Double.parseDouble(split[4]) / 10d;
 		b = x2 - x1;
 		h = y2 - y1;
 		

@@ -11,27 +11,33 @@ public class Library {
 	
 	private int id;
 	
+	private int count = 0;
+	
 	private String name;
 	
-	private ArrayList<LibraryComponent> pins = new ArrayList<LibraryComponent>();
+	private ArrayList<LibraryComponent> libraryComponents = new ArrayList<LibraryComponent>();
 	
 	public void buildLibrary(final String[] data)
 	{
 		LibraryComponent lc = new LibraryComponent();
 		
-		System.out.println("\n***** "+getName()+" *****");
+//		System.out.println("\n***** "+getName()+" *****");
 		
 		// Start des neuen Objektes suchen
 		for(String s : data)
-		{	
+		{
+//			System.out.println("s: "+s);
+//			System.out.println("lc.isReady()="+lc.isReady());
 			// Anfang suchen und neues Objekt erzeugen
-			if(s.contains("DEF") && !s.contains("ENDDEF") && !lc.isReady())
+			if(s.toLowerCase().contains("def") && !s.toLowerCase().contains("enddef") && !lc.isReady())
 			{
-//				System.out.println(s);
+//				System.out.println("Bauteilname: "+s);
 				lc = new LibraryComponent();
-				pins.add(lc);
+				libraryComponents.add(lc);
 				lc.setReady(true);
 				lc.addLine(s);
+				
+				count++;
 				
 				continue;
 			}
@@ -39,11 +45,11 @@ public class Library {
 			// Objektinfos auslesen
 			if(lc.isReady())
 			{
-//				System.out.println(s);
+//				System.out.println("line: "+s);
 				lc.addLine(s);
 				
 				// Ende markieren
-				if(s.toLowerCase().contains("#end library"))
+				if(s.toLowerCase().contains("enddef"))
 				{
 					lc.setReady(false);
 					lc.build();	// Build-Prozess starten
@@ -68,4 +74,11 @@ public class Library {
 		this.name = name;
 	}
 
+	public ArrayList<LibraryComponent> getLibraryComponents() {
+		return libraryComponents;
+	}
+	
+	public int getCount() {
+		return count;
+	}
 }

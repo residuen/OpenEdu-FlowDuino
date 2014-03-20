@@ -63,10 +63,11 @@ public class MainPanel extends JPanel
 		// Das IconMenuPanel in einen ScrollPane geben
 		JScrollPane leftScrollpane = new JScrollPane(new IconMenuPanel(menuListener, drawListener, inputComponents), JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // contentPanel));
 		leftScrollpane.setBorder(null);
-		JScrollPane rightScrollpane = new JScrollPane(new LibraryMenuPanel(inputComponents), JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // contentPanel));
+//		JScrollPane rightScrollpane = new JScrollPane(new LibraryMenuPanel(inputComponents), JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // contentPanel));
 		leftScrollpane.setBorder(null);
 		add(leftScrollpane, BorderLayout.WEST); 	// Scrollpanel mit Menupanel links in Hauptpanel einhängen
-		add(rightScrollpane, BorderLayout.EAST); 	// Scrollpanel mit Menupanel rechts in Hauptpanel einhängen
+		add(new LibraryMenuPanel(inputComponents), BorderLayout.EAST); 	// Scrollpanel mit Menupanel rechts in Hauptpanel einhängen
+//		add(rightScrollpane, BorderLayout.EAST); 	// Scrollpanel mit Menupanel rechts in Hauptpanel einhängen
 		add(mdiFrame, BorderLayout.CENTER);		// MDI-Panel mit Visu und Server-Msg ins Center einhaengen
 		add(status, BorderLayout.SOUTH);
 	}

@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.Box;
@@ -15,12 +16,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 import de.mylayout.lib.LibReader;
+import de.mylayout.lib.Library;
+import de.mylayout.lib.LibraryComponent;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;
@@ -29,6 +33,7 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 	
 	private LibReader libraryReader = null;
 	
+	private Box vBox = Box.createVerticalBox();
 	/**
 	 * Der Konstruktor erhaelt die HashMap, welche verschiedene
 	 * Komponenten Objekte beinhaltet (Textfelder, Checkboxen, usw.)
@@ -50,14 +55,19 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		setBackground(new Color(215, 215, 215));	// Hintergrundfarbe festlegen
 		setLayout(new BorderLayout());
 		
+//		JPanel p = new JPanel();
+		
 		LibReader lp = new LibReader();	// Testen des KiCad-parsers
 			
 		String libList[] = lp.getLibList();
 		
 		JComboBox<String> library = new JComboBox<String>(libList);
 		library.addActionListener(this);
+
+//		p.add(vBox);
 		
 		add(library, BorderLayout.NORTH);
+		add(new JScrollPane(vBox), BorderLayout.CENTER);
 	}
 	
 	private void initElectricComponents()
@@ -65,6 +75,20 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		libraryReader = new LibReader();
 		
 		libraryReader.parse();
+		
+		ArrayList<Library> libs = libraryReader.getLibrary();
+		
+		for(Library l : libs)
+		{
+			System.out.println("Bibliothek: "+l.getName()+" Bauteile: "+l.getCount());
+			
+			for(LibraryComponent lc : l.getLibraryComponents())
+			{
+//				System.out.println(lc.getLibraryButton());
+				
+				vBox.add(lc.getLibraryButton());
+			}
+		}
 	}
 
 	@Override

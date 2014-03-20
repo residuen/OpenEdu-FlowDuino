@@ -15,8 +15,6 @@ public class LibReader {
 	
 	private String libs = "";
 	
-//	private Library library = null;
-	
 	private ArrayList<Library> librarys = new ArrayList<Library>();
 	
 	public LibReader()
