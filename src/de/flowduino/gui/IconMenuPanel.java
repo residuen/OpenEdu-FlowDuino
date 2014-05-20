@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
@@ -41,7 +42,8 @@ public class IconMenuPanel extends JPanel {
 		setBackground(new Color(215, 215, 215));	// Hintergrundfarbe festlegen
 		
 		JPanel panel = null;
-		JToggleButton button = null;
+		JToggleButton tButton = null;
+		JButton button = null;
 		
 		ButtonGroup bgroup = new ButtonGroup();
 		
@@ -61,27 +63,29 @@ public class IconMenuPanel extends JPanel {
 		 */
 		
 		panel = new JPanel(new GridLayout(1, 1));
-		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/grid2.png")));
-		button.setFont(font);
-		button.setSelected(true);
-		button.setToolTipText("Raster ein/ausschalten");
-		button.setName("grid");
-		inputComponents.put(button.getName(), button);
+		tButton = new JToggleButton(new ImageIcon(getClass().getResource("/de/flowduino/images/icons/network-wired.png")));
+//		button = new JToggleButton("<html>Fang<br/>aus</html>",
+//		new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
+		tButton.setFont(font);
+//		tButton.setSelected(true);
+		tButton.setToolTipText("Connect Arduino");
+		tButton.setName("connect");
+		inputComponents.put(tButton.getName(), tButton);
 //		button.setHorizontalTextPosition(SwingConstants.CENTER);
 //		button.setVerticalTextPosition(SwingConstants.BOTTOM);
-		button.setPreferredSize(dim);
-		button.setMinimumSize(dim);
-		button.addActionListener(menuListener);
-		panel.add(button);
+		tButton.setPreferredSize(dim);
+		tButton.setMinimumSize(dim);
+		tButton.addActionListener(menuListener);
+		panel.add(tButton);
 		vBox.add(panel);
 		vBox.add(Box.createVerticalStrut(5));
 
 		panel = new JPanel(new GridLayout(1, 1));
-		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
+		button = new JButton(new ImageIcon(getClass().getResource("/de/flowduino/images/icons/folder-downloads.png")));
 		button.setFont(font);
 		button.setSelected(true);
-		button.setToolTipText("Fang ein/ausschalten");
-		button.setName("catch");
+		button.setToolTipText("Arduino auslesen");
+		button.setName("read");
 		inputComponents.put(button.getName(), button);
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
 		button.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -93,13 +97,11 @@ public class IconMenuPanel extends JPanel {
 		vBox.add(Box.createVerticalStrut(5));
 
 		panel = new JPanel(new GridLayout(1, 1));
-		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/pointer.png")));
-//			button = new JToggleButton("<html>Fang<br/>aus</html>",
-//					new ImageIcon(getClass().getResource("/de/mylayout/images/icons/catcher.png")));
+		button = new JButton(new ImageIcon(getClass().getResource("/de/flowduino/images/icons/folder-remote.png")));
 		button.setFont(font);
-		button.setToolTipText("<html>Auswahl</html>");
-		button.setName("pointer");
-		bgroup.add(button);
+		button.setToolTipText("Arduino senden");
+		button.setName("send");
+//		bgroup.add(button);
 		inputComponents.put(button.getName(), button);
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
 		button.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -112,13 +114,11 @@ public class IconMenuPanel extends JPanel {
 
 		// Starten der Visualisierung
 		panel = new JPanel(new GridLayout(1, 1));
-		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/line.png")));
-//		button = new JToggleButton("<html>Linie<br/>zeichnen</html>",
-//				new ImageIcon(getClass().getResource("/de/mylayout/images/icons/line.png")));
+		button = new JButton(new ImageIcon(getClass().getResource("/de/flowduino/images/icons/edit-clear.png")));
 		button.setFont(font);
-		button.setToolTipText("Zeichnen einer Linie oder Leitung");
-		button.setName("line");
-		bgroup.add(button);
+		button.setToolTipText("Reset Arduino");
+		button.setName("reset");
+//		bgroup.add(tButton);
 		inputComponents.put(button.getName(), button);
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
 		button.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -130,36 +130,32 @@ public class IconMenuPanel extends JPanel {
 		vBox.add(Box.createVerticalStrut(3));
 		
 		panel = new JPanel(new GridLayout(1, 1));
-		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/path.png")));
-//		button = new JToggleButton("<html>Pfad<br/>zeichnen</html>",
-//				new ImageIcon(getClass().getResource("/de/mylayout/images/icons/path.png")));
-		button.setFont(font);
-		button.setToolTipText("<html>Einen Pfad zeichnen</html>");
-		button.setName("path");
-		bgroup.add(button);
-		inputComponents.put(button.getName(), button);
-		button.setHorizontalTextPosition(SwingConstants.CENTER);
-		button.setVerticalTextPosition(SwingConstants.BOTTOM);
-		button.setPreferredSize(dim);
-		button.setMinimumSize(dim);
-		button.addActionListener(menuListener);
-		panel.add(button);
+		tButton = new JToggleButton(new ImageIcon(getClass().getResource("/de/flowduino/images/icons/media-playback-start.png")));
+		tButton.setFont(font);
+		tButton.setToolTipText("Starte Arduino");
+		tButton.setName("start");
+//		bgroup.add(tButton);
+		inputComponents.put(tButton.getName(), tButton);
+		tButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		tButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+		tButton.setPreferredSize(dim);
+		tButton.setMinimumSize(dim);
+		tButton.addActionListener(menuListener);
+		panel.add(tButton);
 		vBox.add(panel);
 		vBox.add(Box.createVerticalStrut(3));
 
 		// Infos ueber das Programm
 		panel = new JPanel(new GridLayout(1, 1));
-		button = new JToggleButton(new ImageIcon(getClass().getResource("/de/mylayout/images/icons/point.png")));
-//		button = new JToggleButton("<html>Kontakt<br/>zeichnen</html>",
-//				new ImageIcon(getClass().getResource("/de/mylayout/images/icons/point.png")));
+		button = new JButton(new ImageIcon(getClass().getResource("/de/flowduino/images/icons/media-playback-stop.png")));
 		button.setFont(font);
-		button.setToolTipText("<html>Kontaktpunkt setzen</html>");
-		button.setName("contact");
+		button.setToolTipText("Stoppe Arduino");
+		button.setName("stop");
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
 		button.setVerticalTextPosition(SwingConstants.BOTTOM);
 		button.setPreferredSize(dim);
 		button.setMinimumSize(dim);
-		bgroup.add(button);
+//		bgroup.add(tButton);
 		button.addActionListener(menuListener);
 		panel.add(button);
 		vBox.add(panel);

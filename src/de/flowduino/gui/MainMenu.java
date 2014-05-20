@@ -46,17 +46,17 @@ public class MainMenu extends JMenuBar {
 		
 		JMenuItem item;
 
-		item = new JMenuItem("Lade Layout");
+		item = new JMenuItem("Lade Projekt");
 		item.setName("load");
 		item.addActionListener(menuListener);
 		file.add(item);
 
-		item = new JMenuItem("Speichere Layout");
+		item = new JMenuItem("Speichere Projekt");
 		item.setName("save");
 		item.addActionListener(menuListener);
 		file.add(item);
 
-		item = new JMenuItem("Drucke Layout");
+		item = new JMenuItem("Drucke Projekt");
 		item.setName("print");
 		item.addActionListener(menuListener);
 		file.add(item);

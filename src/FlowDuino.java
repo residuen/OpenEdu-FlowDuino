@@ -1,7 +1,7 @@
 import de.flowduino.gui.GuiBuilder;
 
 /*
-OpenEdu-Mylayout: Ein einfache Programm fuer Leiterplatten-Layouts
+OpenEdu-Mylayout: Ein einfache Programm zur Simulations von Regelungstechnik
 
 Copyright (C) 2014 Karsten Blauel
 

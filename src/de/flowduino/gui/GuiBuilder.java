@@ -44,7 +44,7 @@ public class GuiBuilder
 		MenuListener menuListener = new MenuListener(drawListener, objectTable); // inputComponents);
 
 		
-		MainFrame mainFrame = new MainFrame("OpenEdu-MyLayout");
+		MainFrame mainFrame = new MainFrame("OpenEdu-FlowDuino");
 		mainFrame.getContentPane().setLayout(new BorderLayout());
 		
 		mainFrame.setJMenuBar(new MainMenu(menuListener, objectTable, drawListener));

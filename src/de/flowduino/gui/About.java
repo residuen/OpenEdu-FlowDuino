@@ -30,7 +30,7 @@ public class About extends JFrame
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 14)); 	// Monospace-Font setzen
 		
-		string.append("\n OpenEdu-MyLayout: Ein freies Platinenlayout-Tool\n");
+		string.append("\n OpenEdu-FlowDuino: Ein freies Regelungstechnik-Tool\n");
 		string.append("\n Version: 0.1 beta\n");
 		string.append(" (c) Copyright K. Blauel 2014. All rights reserved.\n");
 		string.append(" Lizenz: GPL 3.0 (http://www.gnu.de/documents/gpl.de.html)\n");
@@ -70,7 +70,7 @@ public class About extends JFrame
 		Container cp = getContentPane();
 		cp.add(panel);
 		frame = new JFrame();
-		frame.setTitle("OpenEdu-MyLayout");
+		frame.setTitle("OpenEdu-FLowDuino");
 		frame.setSize(505, 230);
 		frame.setContentPane(cp);
 		frame.setLayout(new GridLayout(1,1));
