@@ -3,7 +3,7 @@
  * http://en.wikibooks.org/wiki/Kicad/file_formats
  */
 
-package de.mylayout.lib;
+package de.flowduino.lib;
 
 import java.util.ArrayList;
 

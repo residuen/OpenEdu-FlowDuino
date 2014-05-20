@@ -1,4 +1,4 @@
-package de.mylayout.lib;
+package de.flowduino.lib;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.test.TestTheLib;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.test.TestTheLib;
 
 public class LibraryButton extends JButton implements ActionListener {
 	

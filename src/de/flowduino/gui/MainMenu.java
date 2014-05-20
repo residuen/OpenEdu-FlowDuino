@@ -9,9 +9,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import de.mylayout.listener.DrawListener;
-import de.mylayout.listener.MenuListener;
-import de.mylayout.visu.ObjectTablePanel;
+import de.flowduino.listener.DrawListener;
+import de.flowduino.listener.MenuListener;
+import de.flowduino.visu.ObjectTablePanel;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 

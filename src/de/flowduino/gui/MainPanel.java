@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.listener.DrawListener;
-import de.mylayout.listener.MenuListener;
-import de.mylayout.visu.LayoutPanel;
-import de.mylayout.visu.ObjectListPanel;
-import de.mylayout.visu.ObjectPanel;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.listener.DrawListener;
+import de.flowduino.listener.MenuListener;
+import de.flowduino.visu.LayoutPanel;
+import de.flowduino.visu.ObjectListPanel;
+import de.flowduino.visu.ObjectPanel;
 
 /**
  * Hauptpanel, beinhaltet alle Komponeten-Panels

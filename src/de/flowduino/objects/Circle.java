@@ -1,55 +1,52 @@
-package de.mylayout.objects;
+package de.flowduino.objects;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.Arc2D;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.tools.PaintConstants;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.tools.PaintConstants;
+ 
+public class Circle extends Arc2D.Double implements ObjectInterface {
 
-public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
-
-	private Color lineColor = Color.black;
+	private Color lineColor = Color.RED;
 	private Color fillColor = Color.white;
 	
 	private boolean fill = false;
 	
-	private float lineWidth = 5.0f;
+	private float lineWidth = 3.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
 	private int id = 0;
 
-	private String name = "Rectangle"; 
+	private String name = "Circle"; 
 			
+//	java.awt.geom.GeneralPath
+	
 	private BasicStroke stroke = new BasicStroke(lineWidth);
 	
 	public BasicStroke getStroke() {
 		return stroke;
 	}
 
-	public Rectangle(int id) {
+	public Circle(int id) {
 		super();
 		
 		this.id = id;
 	}
 
-	public Rectangle(int id, double arg0, double arg1, double arg2, double arg3) {
-		super(arg0, arg1, arg2, arg3);
+	public Circle(int id, double arg0, double arg1, double arg2, double arg3) {
+		super(arg0, arg1, arg2, arg3, 0, 360, Arc2D.CHORD);
 		
 		this.id = id;
 	}
 
 	public void movePoint(int n, double x, double y)
 	{
-//		setRect(x, y, getWidth(), getHeight());
-		
-		if(n==1)
-			setRect(x, y, getWidth(), getHeight());
-		else
-			if(n==2)
-				setRect(getX(), getY(), x, y);
+		setArc(x, y, getWidth(), getHeight(), 0, 360, Arc2D.CHORD);
 	}
 	
 	@Override
@@ -76,27 +73,20 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 
 	@Override
 	public Color getLineColor() {
-
+		// TODO Auto-generated method stub
 		return lineColor;
 	}
 
 	@Override
 	public Color getFillColor() {
-
-		return fillColor;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public float getLineWidth() {
 		// TODO Auto-generated method stub
 		return lineWidth;
-	}
-	
-	@Override
-	public void setLineWidth(float lineWidth) {
-		this.lineWidth = lineWidth;
-		
-		this.stroke = new BasicStroke(lineWidth);
 	}
 	
 	public Shape getShape() { return null; }
@@ -113,6 +103,13 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 		
 	}
 
+	@Override
+	public void setLineWidth(float lineWidth) {
+		this.lineWidth = lineWidth;
+		
+		this.stroke = new BasicStroke(lineWidth);
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -120,7 +117,7 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public int getId() {
 		return id;
 	}

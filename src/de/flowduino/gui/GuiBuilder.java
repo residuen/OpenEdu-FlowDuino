@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.lib.LibReader;
-import de.mylayout.listener.DrawListener;
-import de.mylayout.listener.MenuListener;
-import de.mylayout.visu.ObjectPanel;
-import de.mylayout.visu.ObjectTablePanel;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.lib.LibReader;
+import de.flowduino.listener.DrawListener;
+import de.flowduino.listener.MenuListener;
+import de.flowduino.visu.ObjectPanel;
+import de.flowduino.visu.ObjectTablePanel;
 
 /**
  * Initialisiert wichtige Objekte

@@ -1,4 +1,4 @@
-package de.mylayout.listener;
+package de.flowduino.listener;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -16,8 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import de.flowduino.gui.About;
-import de.mylayout.tools.PaintConstants;
-import de.mylayout.visu.ObjectTablePanel;
+import de.flowduino.tools.PaintConstants;
+import de.flowduino.visu.ObjectTablePanel;
 
 public class MenuListener implements ActionListener, MouseListener
 {

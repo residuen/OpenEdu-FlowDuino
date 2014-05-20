@@ -1,4 +1,4 @@
-package de.mylayout.objects;
+package de.flowduino.objects;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -11,8 +11,8 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.tools.PaintConstants;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.tools.PaintConstants;
  
 public class Path implements ObjectInterface {
 

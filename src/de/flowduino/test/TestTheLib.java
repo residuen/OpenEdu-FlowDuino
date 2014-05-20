@@ -1,4 +1,4 @@
-package de.mylayout.test;
+package de.flowduino.test;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -13,7 +13,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import de.mylayout.interfaces.ObjectInterface;
+import de.flowduino.interfaces.ObjectInterface;
 
 public class TestTheLib extends JFrame implements ChangeListener {
 	

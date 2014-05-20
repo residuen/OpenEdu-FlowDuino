@@ -1,4 +1,4 @@
-package de.mylayout.visu;
+package de.flowduino.visu;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.listener.DrawListener;
-import de.mylayout.objects.Circle;
-import de.mylayout.objects.Rectangle;
-import de.mylayout.tools.PaintConstants;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.listener.DrawListener;
+import de.flowduino.objects.Circle;
+import de.flowduino.objects.Rectangle;
+import de.flowduino.tools.PaintConstants;
 
 public class DrawPanel extends JPanel implements ComponentListener {
 	

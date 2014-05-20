@@ -1,18 +1,17 @@
-package de.mylayout.objects;
+package de.flowduino.objects;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Arc2D;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.tools.PaintConstants;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.tools.PaintConstants;
  
-public class Circle extends Arc2D.Double implements ObjectInterface {
+public class Line extends Line2D.Double implements ObjectInterface {
 
-	private Color lineColor = Color.RED;
+	private Color lineColor = Color.GREEN;
 	private Color fillColor = Color.white;
 	
 	private boolean fill = false;
@@ -20,67 +19,81 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 	private float lineWidth = 3.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
+	
 	private int id = 0;
 
-	private String name = "Circle"; 
-			
-//	java.awt.geom.GeneralPath
-	
+	private String name = "Line"; 
+		
 	private BasicStroke stroke = new BasicStroke(lineWidth);
 	
 	public BasicStroke getStroke() {
 		return stroke;
 	}
 
-	public Circle(int id) {
+	public Line(int id) {
 		super();
 		
 		this.id = id;
 	}
 
-	public Circle(int id, double arg0, double arg1, double arg2, double arg3) {
-		super(arg0, arg1, arg2, arg3, 0, 360, Arc2D.CHORD);
+	public Line(int id, double arg0, double arg1, double arg2, double arg3) {
+		super(arg0, arg1, arg2, arg3);
 		
 		this.id = id;
 	}
 
-	public void movePoint(int n, double x, double y)
-	{
-		setArc(x, y, getWidth(), getHeight(), 0, 360, Arc2D.CHORD);
+	public Line(int id, Point2D arg0, Point2D arg1) {
+		super(arg0, arg1);
+		
+		this.id = id;
 	}
 	
+	public void movePoint(int n, double x, double y)
+	{
+		if(n==1)
+			setLine(x, y, getX2(), getY2());
+		else
+			if(n==2)
+				setLine(getX1(), getY1(), x, y);
+	}
+
 	@Override
 	public void moveObjectAbsolute(double x, double y) {
-		setFrame(x, y, getWidth(), getHeight());
+		setLine(x, y, getBounds2D().getWidth() + x, getBounds2D().getHeight() + y);
 	}
 
 	@Override
 	public void moveObjectRelative(double x, double y) {
-		setFrame(getX() + x, getY() + y, getWidth(), getHeight());
+		setLine(getX1() + x, getY1() + y, getX2() + x, getY2() + y);
 		
 	}
 
+	
 	public void setLineColor(Color color)
 	{
 		this.lineColor = color;
 	}
 
+	public Shape getShape() { return null; }
+	
+	
+	
 	@Override
 	public int getTyp() {
-		// TODO Auto-generated method stub
+
 		return typ;
 	}
 
 	@Override
 	public Color getLineColor() {
-		// TODO Auto-generated method stub
+
 		return lineColor;
 	}
 
 	@Override
 	public Color getFillColor() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return fillColor;
 	}
 
 	@Override
@@ -89,7 +102,12 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 		return lineWidth;
 	}
 	
-	public Shape getShape() { return null; }
+	@Override
+	public void setLineWidth(float lineWidth) {
+		this.lineWidth = lineWidth;
+		
+		this.stroke = new BasicStroke(lineWidth);
+	}
 
 	@Override
 	public void addPoint(double x, double y) {
@@ -103,13 +121,6 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 		
 	}
 
-	@Override
-	public void setLineWidth(float lineWidth) {
-		this.lineWidth = lineWidth;
-		
-		this.stroke = new BasicStroke(lineWidth);
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -117,7 +128,7 @@ public class Circle extends Arc2D.Double implements ObjectInterface {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

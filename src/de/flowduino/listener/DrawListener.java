@@ -1,4 +1,4 @@
-package de.mylayout.listener;
+package de.flowduino.listener;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.objects.Circle;
-import de.mylayout.objects.Line;
-import de.mylayout.objects.Path;
-import de.mylayout.tools.PaintConstants;
-import de.mylayout.visu.DrawPanel;
-import de.mylayout.visu.ObjectTablePanel;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.objects.Circle;
+import de.flowduino.objects.Line;
+import de.flowduino.objects.Path;
+import de.flowduino.tools.PaintConstants;
+import de.flowduino.visu.DrawPanel;
+import de.flowduino.visu.ObjectTablePanel;
 
 public class DrawListener implements MouseListener, MouseMotionListener, MouseWheelListener {
 	

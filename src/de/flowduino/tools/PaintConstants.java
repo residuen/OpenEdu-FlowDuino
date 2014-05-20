@@ -1,4 +1,4 @@
-package de.mylayout.tools;
+package de.flowduino.tools;
 
 public class PaintConstants {
 	

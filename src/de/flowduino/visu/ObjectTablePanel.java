@@ -1,4 +1,4 @@
-package de.mylayout.visu;
+package de.flowduino.visu;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
-import de.mylayout.interfaces.ObjectInterface;
+import de.flowduino.interfaces.ObjectInterface;
 
 public class ObjectTablePanel extends JPanel {
 	

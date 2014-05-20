@@ -1,4 +1,4 @@
-package de.mylayout.visu;
+package de.flowduino.visu;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.mylayout.interfaces.ObjectInterface;
+import de.flowduino.interfaces.ObjectInterface;
 
 public class ObjectListPanel extends JInternalFrame
 {

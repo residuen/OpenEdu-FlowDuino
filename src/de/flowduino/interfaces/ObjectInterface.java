@@ -1,4 +1,4 @@
-package de.mylayout.interfaces;
+package de.flowduino.interfaces;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

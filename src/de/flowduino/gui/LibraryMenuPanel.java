@@ -23,10 +23,10 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import de.mylayout.lib.LibReader;
-import de.mylayout.lib.Library;
-import de.mylayout.lib.LibraryComponent;
-import de.mylayout.test.TestTheLib;
+import de.flowduino.lib.LibReader;
+import de.flowduino.lib.Library;
+import de.flowduino.lib.LibraryComponent;
+import de.flowduino.test.TestTheLib;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;

@@ -1,86 +1,76 @@
-package de.mylayout.objects;
+package de.flowduino.objects;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Shape;
-import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.tools.PaintConstants;
- 
-public class Line extends Line2D.Double implements ObjectInterface {
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.tools.PaintConstants;
 
-	private Color lineColor = Color.GREEN;
+public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
+
+	private Color lineColor = Color.black;
 	private Color fillColor = Color.white;
 	
 	private boolean fill = false;
 	
-	private float lineWidth = 3.0f;
+	private float lineWidth = 5.0f;
 	
 	private int typ = PaintConstants.LINE_OBJECT;
-	
 	private int id = 0;
 
-	private String name = "Line"; 
-		
+	private String name = "Rectangle"; 
+			
 	private BasicStroke stroke = new BasicStroke(lineWidth);
 	
 	public BasicStroke getStroke() {
 		return stroke;
 	}
 
-	public Line(int id) {
+	public Rectangle(int id) {
 		super();
 		
 		this.id = id;
 	}
 
-	public Line(int id, double arg0, double arg1, double arg2, double arg3) {
+	public Rectangle(int id, double arg0, double arg1, double arg2, double arg3) {
 		super(arg0, arg1, arg2, arg3);
 		
 		this.id = id;
 	}
 
-	public Line(int id, Point2D arg0, Point2D arg1) {
-		super(arg0, arg1);
-		
-		this.id = id;
-	}
-	
 	public void movePoint(int n, double x, double y)
 	{
+//		setRect(x, y, getWidth(), getHeight());
+		
 		if(n==1)
-			setLine(x, y, getX2(), getY2());
+			setRect(x, y, getWidth(), getHeight());
 		else
 			if(n==2)
-				setLine(getX1(), getY1(), x, y);
+				setRect(getX(), getY(), x, y);
 	}
-
+	
 	@Override
 	public void moveObjectAbsolute(double x, double y) {
-		setLine(x, y, getBounds2D().getWidth() + x, getBounds2D().getHeight() + y);
+		setFrame(x, y, getWidth(), getHeight());
 	}
 
 	@Override
 	public void moveObjectRelative(double x, double y) {
-		setLine(getX1() + x, getY1() + y, getX2() + x, getY2() + y);
+		setFrame(getX() + x, getY() + y, getWidth(), getHeight());
 		
 	}
 
-	
 	public void setLineColor(Color color)
 	{
 		this.lineColor = color;
 	}
 
-	public Shape getShape() { return null; }
-	
-	
-	
 	@Override
 	public int getTyp() {
-
+		// TODO Auto-generated method stub
 		return typ;
 	}
 
@@ -108,6 +98,8 @@ public class Line extends Line2D.Double implements ObjectInterface {
 		
 		this.stroke = new BasicStroke(lineWidth);
 	}
+	
+	public Shape getShape() { return null; }
 
 	@Override
 	public void addPoint(double x, double y) {

@@ -1,10 +1,10 @@
-package de.mylayout.lib;
+package de.flowduino.lib;
 
 import java.util.ArrayList;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.objects.Circle;
-import de.mylayout.objects.Line;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.objects.Circle;
+import de.flowduino.objects.Line;
 
 public class LibraryComponent {
 	

@@ -1,11 +1,11 @@
-package de.mylayout.lib;
+package de.flowduino.lib;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import de.mylayout.tools.FileHandler;
-import de.mylayout.tools.Xml;
+import de.flowduino.tools.FileHandler;
+import de.flowduino.tools.Xml;
 
 public class LibReader {
 	

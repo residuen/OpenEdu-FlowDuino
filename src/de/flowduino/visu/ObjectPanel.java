@@ -1,4 +1,4 @@
-package de.mylayout.visu;
+package de.flowduino.visu;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -8,7 +8,7 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.mylayout.interfaces.ObjectInterface;
+import de.flowduino.interfaces.ObjectInterface;
 
 public class ObjectPanel extends JPanel {
 	

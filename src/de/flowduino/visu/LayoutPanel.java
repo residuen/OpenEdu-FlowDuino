@@ -1,4 +1,4 @@
-package de.mylayout.visu;
+package de.flowduino.visu;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
 
-import de.mylayout.interfaces.ObjectInterface;
-import de.mylayout.listener.DrawListener;
+import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.listener.DrawListener;
 
 public class LayoutPanel extends JInternalFrame  {
 

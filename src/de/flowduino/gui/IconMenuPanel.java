@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import de.mylayout.listener.DrawListener;
-import de.mylayout.listener.MenuListener;
+import de.flowduino.listener.DrawListener;
+import de.flowduino.listener.MenuListener;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;
