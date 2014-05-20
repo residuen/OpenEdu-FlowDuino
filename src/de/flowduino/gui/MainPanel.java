@@ -1,4 +1,4 @@
-package de.mylayout.gui;
+package de.flowduino.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

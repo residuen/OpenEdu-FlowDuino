@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
-import de.mylayout.gui.About;
+import de.flowduino.gui.About;
 import de.mylayout.tools.PaintConstants;
 import de.mylayout.visu.ObjectTablePanel;
 

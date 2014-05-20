@@ -1,4 +1,4 @@
-package de.mylayout.gui;
+package de.flowduino.gui;
 
 import java.awt.Color;
 import java.awt.Container;

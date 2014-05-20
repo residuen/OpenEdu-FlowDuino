@@ -1,4 +1,4 @@
-import de.mylayout.gui.GuiBuilder;
+import de.flowduino.gui.GuiBuilder;
 
 /*
 OpenEdu-Mylayout: Ein einfache Programm fuer Leiterplatten-Layouts
@@ -15,9 +15,9 @@ Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem Prog
 Falls nicht, siehe <http://www.gnu.org/licenses/>.
 */
 
-public class MyLayout
+public class FlowDuino
 {
-	public MyLayout()
+	public FlowDuino()
 	{
 		System.out.println("user.home="+System.getProperty("user.home"));
 		System.out.println("CPU-Cores: "+ Runtime.getRuntime().availableProcessors() );
@@ -30,6 +30,6 @@ public class MyLayout
 	 */
 	public static void main(String[] args)
 	{	
-		new MyLayout();
+		new FlowDuino();
 	}
 }

@@ -1,4 +1,4 @@
-package de.mylayout.gui;
+package de.flowduino.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -25,6 +26,7 @@ import javax.swing.SwingConstants;
 import de.mylayout.lib.LibReader;
 import de.mylayout.lib.Library;
 import de.mylayout.lib.LibraryComponent;
+import de.mylayout.test.TestTheLib;
 
 //import de.virtualprocessmanagement.listener.MenuListener;
 //import de.virtualprocessmanagement.tools.Dialog;
@@ -32,6 +34,10 @@ import de.mylayout.lib.LibraryComponent;
 public class LibraryMenuPanel extends JPanel implements ActionListener {
 	
 	private LibReader libraryReader = null;
+	
+	private HashMap<String, JPanel> libPanels = new HashMap<String, JPanel>();
+	
+	private String lastPanelKey = null;
 	
 	private Box vBox = Box.createVerticalBox();
 	/**
@@ -78,22 +84,66 @@ public class LibraryMenuPanel extends JPanel implements ActionListener {
 		
 		ArrayList<Library> libs = libraryReader.getLibrary();
 		
+		JPanel libPanel = null;
+		
+		Box b = null;
+		
 		for(Library l : libs)
 		{
 			System.out.println("Bibliothek: "+l.getName()+" Bauteile: "+l.getCount());
+			
+			libPanel = new JPanel(new GridLayout(1, 1));
+			libPanel.setVisible(false);
+			
+			b = Box.createVerticalBox();
+			
+			libPanel.add(b);
+			
+			libPanels.put(l.getName(), libPanel);
 			
 			for(LibraryComponent lc : l.getLibraryComponents())
 			{
 //				System.out.println(lc.getLibraryButton());
 				
-				vBox.add(lc.getLibraryButton());
+				b.add(lc.getLibraryButton());
+				b.add(new JLabel(lc.getName()));
+				b.add(Box.createVerticalStrut(3));
 			}
+			
+			vBox.add(libPanel);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println(((JComboBox<String>)arg0.getSource()).getSelectedItem().toString());
 		
+		@SuppressWarnings("unchecked")
+		String cmd = ((JComboBox<String>)arg0.getSource()).getSelectedItem().toString();
+		
+//		TestTheLib tl = new TestTheLib();
+		
+		if(lastPanelKey == null)
+		{
+			libPanels.get(cmd).setVisible(true);
+			
+			lastPanelKey = cmd;
+		}
+		else
+		{
+			libPanels.get(lastPanelKey).setVisible(false);
+			libPanels.get(cmd).setVisible(true);
+			
+			lastPanelKey = cmd;
+		}
+		
+		validate();
+		
+		System.out.println(cmd);
+		
+//		for(Iterator<String> it = libPanels.keySet().iterator(); it.hasNext();)
+//		{
+////			System.out.println("it="+it.next());
+//		}
+
 	}
 }

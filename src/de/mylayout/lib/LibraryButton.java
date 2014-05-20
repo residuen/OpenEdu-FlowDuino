@@ -2,16 +2,18 @@ package de.mylayout.lib;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 
 import de.mylayout.interfaces.ObjectInterface;
+import de.mylayout.test.TestTheLib;
 
-public class LibraryButton extends JButton {
+public class LibraryButton extends JButton implements ActionListener {
 	
 	private ArrayList<ObjectInterface> objects = null;
 
@@ -24,8 +26,10 @@ public class LibraryButton extends JButton {
 	{
 		this.objects = objects;
 		
-		setPreferredSize(new Dimension(100, 100));
-		setMinimumSize(new Dimension(100, 100));
+		addActionListener(this);
+		
+//		setPreferredSize(new Dimension(200, 100));
+//		setMinimumSize(new Dimension(200, 100));
 	}
 	
 //	public void setMinValues(double x, double y)
@@ -48,13 +52,16 @@ public class LibraryButton extends JButton {
 		
 		g2d.clearRect(0, 0, getWidth(), getHeight());
 		
-		g2d.translate(minX, minY);
-		g2d.scale(1, 1);
+//		g2d.drawLine(0,0, getWidth(), getHeight());
+//		g2d.drawLine(0,getHeight(), getWidth(), 0);
+
+		g2d.scale(0.1, 0.1);
+		g2d.translate(minX*0.1, minY*0.1);
 		
 //		g2d.drawLine(0,0, getWidth(), getHeight());
 //		g2d.drawLine(0,getHeight(), getWidth(), 0);
 		
-		g2d.drawString("minX="+minX, 0, 10);
+//		g2d.drawString("minX="+minX, 0, 10);
 
 		if(objects.size() > 0)
 		for(ObjectInterface o : objects)
@@ -107,6 +114,17 @@ public class LibraryButton extends JButton {
 
 	public void setMaxY(double maxY) {
 		this.maxY = maxY;
+	}
+
+	public ArrayList<ObjectInterface> getObjects() {
+		return objects;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		System.out.println(arg0.getActionCommand());
+		
+		new TestTheLib(arg0.getActionCommand(), objects, minX, minY);
 	}
 	
 	

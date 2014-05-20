@@ -16,6 +16,8 @@ public class LibraryComponent {
 	
 	private boolean ready = false;
 	
+	private double scaleDevider = 2;
+	
 	private String name = null;
 	
 //	private double minX = 0, minY = 0;
@@ -98,9 +100,9 @@ public class LibraryComponent {
 		setName(split[1]);
 		
 		id = Integer.parseInt(split[2]);
-		x = Double.parseDouble(split[3]) / 10d;
-		y = Double.parseDouble(split[4]) / 10d;
-		length = Double.parseDouble(split[5]) / 10d;
+		x = Double.parseDouble(split[3]) / scaleDevider;
+		y = Double.parseDouble(split[4]) / scaleDevider;
+		length = Double.parseDouble(split[5]) / scaleDevider;
 		
 		if(x < minX) minX = x;
 		if(y < minY) minY = y;
@@ -128,10 +130,10 @@ public class LibraryComponent {
 //		setName(split[1]);
 		
 //		id = Integer.parseInt(split[2]);
-		x1 = Double.parseDouble(split[1]) / 10d;
-		y1 = Double.parseDouble(split[2]) / 10d;
-		x2 = Double.parseDouble(split[3]) / 10d;
-		y2 = Double.parseDouble(split[4]) / 10d;
+		x1 = Double.parseDouble(split[1]) / scaleDevider;
+		y1 = Double.parseDouble(split[2]) / scaleDevider;
+		x2 = Double.parseDouble(split[3]) / scaleDevider;
+		y2 = Double.parseDouble(split[4]) / scaleDevider;
 		b = x2 - x1;
 		h = y2 - y1;
 		
