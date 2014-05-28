@@ -11,6 +11,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.interfaces.PinInterface;
 import de.flowduino.lib.LibReader;
 import de.flowduino.listener.DrawListener;
 import de.flowduino.listener.MenuListener;
@@ -30,7 +31,7 @@ public class GuiBuilder
 				
 		HashMap<String, Component> inputComponents = new HashMap<String,Component>(); // Nimmt verschiedene Compontenten auf
 		
-		ArrayList<ObjectInterface> objects = new ArrayList<ObjectInterface>();
+		ArrayList<PinInterface> objects = new ArrayList<PinInterface>();
 		
 		JLabel status = new JLabel();
 		status.setOpaque(true);

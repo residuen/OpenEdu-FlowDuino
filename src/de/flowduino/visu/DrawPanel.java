@@ -14,14 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.interfaces.PinInterface;
 import de.flowduino.listener.DrawListener;
 import de.flowduino.objects.Circle;
 import de.flowduino.objects.Rectangle;
-import de.flowduino.tools.PaintConstants;
+import de.flowduino.tools.Constants;
 
 public class DrawPanel extends JPanel implements ComponentListener {
 	
-	private ArrayList<ObjectInterface> objects = null;
+	private ArrayList<PinInterface> objects = null;
 	
 	private ObjectInterface catcherRect = new Rectangle(0, -1,-1,0,0);
 	
@@ -35,7 +36,7 @@ public class DrawPanel extends JPanel implements ComponentListener {
 	
 	private boolean antialiasing = true;
 	
-	public DrawPanel(DrawListener drawListener, ArrayList<ObjectInterface> objects, JTextField status)
+	public DrawPanel(DrawListener drawListener, ArrayList<PinInterface> objects, JTextField status)
 	{
 		this.objects = objects;
 		
@@ -65,16 +66,16 @@ public class DrawPanel extends JPanel implements ComponentListener {
 		
 		g2d.drawImage(img, 0,0, this);
 		
-		for(ObjectInterface o : objects)
-		{
-			g2d.setStroke(new BasicStroke(o.getLineWidth()));
-			g2d.setColor(o.getLineColor());
-			g2d.draw(o);
-		}
+//		for(PinInterface o : objects)
+//		{
+//			g2d.setStroke(new BasicStroke(o.getLineWidth()));
+//			g2d.setColor(o.getLineColor());
+//			g2d.draw(o);
+//		}
 		
 		g2d.setStroke(new BasicStroke(1));
 		g2d.setColor(Color.BLACK);
-		g2d.draw(catcherRect);
+//		g2d.draw(catcherRect);
 	}
 	
 	private void drawGrid(double zoom)
@@ -83,8 +84,8 @@ public class DrawPanel extends JPanel implements ComponentListener {
 		
 		double w = getWidth(); 	if(w<=0) w=100;
 		double h = getHeight();	if(h<=0) h=100;
-		double ww = (w/(PaintConstants.GRID_STEP*zoom))+1;
-		double hh = (h/(PaintConstants.GRID_STEP*zoom))+1;
+		double ww = (w/(Constants.GRID_STEP*zoom))+1;
+		double hh = (h/(Constants.GRID_STEP*zoom))+1;
 		double xy, dx;//, y;
 		
 		
@@ -96,16 +97,16 @@ public class DrawPanel extends JPanel implements ComponentListener {
 //		System.out.println("w/PaintConstants.GRID_STEP*zoom="+ww);
 //		System.out.println("h/PaintConstants.GRID_STEP*zoom="+hh);
 
-		if(gridMode)
-			for(int i=0; i<(ww); i++)
-				for(int j=0; j<(hh); j++)
-				{
-					xy = PaintConstants.GRID_STEP;
-					dx = (PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE - xy) / 4;
-	//				System.out.println("dx="+dx);
-					g.setStroke(new BasicStroke(2));
-					g.draw(new Circle(0, i*xy*zoom+dx, j*xy*zoom+dx, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom));
-				}
+//		if(gridMode)
+//			for(int i=0; i<(ww); i++)
+//				for(int j=0; j<(hh); j++)
+//				{
+//					xy = PaintConstants.GRID_STEP;
+//					dx = (PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE - xy) / 4;
+//	//				System.out.println("dx="+dx);
+//					g.setStroke(new BasicStroke(2));
+//					g.draw(new Circle(0, i*xy*zoom+dx, j*xy*zoom+dx, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom, PaintConstants.GRID_STEP*PaintConstants.RASTER_BALL_FACTOR*zoom));
+//				}
 		
 		resized = false;
 			

@@ -9,14 +9,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.interfaces.PinInterface;
+import de.flowduino.tools.Constants;
 
 public class ObjectPanel extends JPanel {
 	
-	private ArrayList<ObjectInterface> objects = null;
+	private ArrayList<PinInterface> objects = null;
 	
 	private Box vBox = Box.createVerticalBox();
 	
-	public ObjectPanel(ArrayList<ObjectInterface> objects, ObjectTablePanel objectTable)
+	public ObjectPanel(ArrayList<PinInterface> objects, ObjectTablePanel objectTable)
 	{
 		this.objects = objects;
 		
@@ -29,7 +31,9 @@ public class ObjectPanel extends JPanel {
 	{
 		add(vBox);
 		
-		vBox.add(objectTable);
+		vBox.add(new DigitalPin(Constants.OUTPUT_MODE, 0));
+		
+//		vBox.add(objectTable);
 		
 //		JLabel l;
 //		for(int i=0; i<3; i++)

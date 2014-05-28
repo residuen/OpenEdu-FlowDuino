@@ -1,6 +1,6 @@
 package de.flowduino.tools;
 
-public class PaintConstants {
+public class Constants {
 	
 	public static int LINE_OBJECT = 1;
 	public static int PATH_OBJECT = 2;
@@ -17,6 +17,6 @@ public class PaintConstants {
 	public static final int SEL_TOOL_CONTACT = 3;
 	public static final int SEL_TOOL_BOX = 4;
 
-
-
+	public static final int INPUT_MODE = 0;
+	public static final int OUTPUT_MODE = 1;
 }

@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import de.flowduino.interfaces.ObjectInterface;
-import de.flowduino.tools.PaintConstants;
+import de.flowduino.tools.Constants;
  
 public class Path implements ObjectInterface {
 
@@ -23,7 +23,7 @@ public class Path implements ObjectInterface {
 	
 	private float lineWidth = 3.0f;
 	
-	private int typ = PaintConstants.LINE_OBJECT;
+	private int typ = Constants.LINE_OBJECT;
 	private int id = 0;
 
 	private String name = "path"; 

@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.interfaces.PinInterface;
 import de.flowduino.listener.DrawListener;
 import de.flowduino.listener.MenuListener;
 import de.flowduino.visu.LayoutPanel;
@@ -25,12 +26,12 @@ import de.flowduino.visu.ObjectPanel;
  */
 public class MainPanel extends JPanel 
 {
-	public MainPanel(ArrayList<ObjectInterface> objects, MenuListener menuListener, DrawListener drawListener, ObjectPanel objectPanel, HashMap<String, Component> inputComponents)
+	public MainPanel(ArrayList<PinInterface> objects, MenuListener menuListener, DrawListener drawListener, ObjectPanel objectPanel, HashMap<String, Component> inputComponents)
 	{		
 		initPanel(objects, menuListener, drawListener, objectPanel, inputComponents);
 	}
 
-	private void initPanel(ArrayList<ObjectInterface> objects, MenuListener menuListener, DrawListener drawListener, ObjectPanel objectPanel, HashMap<String, Component> inputComponents)
+	private void initPanel(ArrayList<PinInterface> objects, MenuListener menuListener, DrawListener drawListener, ObjectPanel objectPanel, HashMap<String, Component> inputComponents)
 	{
 		setLayout(new BorderLayout());	// Layout-Manager festlegen 
 		

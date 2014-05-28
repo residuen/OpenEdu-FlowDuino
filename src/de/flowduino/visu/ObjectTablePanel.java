@@ -14,26 +14,24 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
 import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.interfaces.PinInterface;
 
 public class ObjectTablePanel extends JPanel {
 	
 	private JTable table;
 	
-	private ArrayList<ObjectInterface> objects;
+	private ArrayList<PinInterface> objects;
 	
 //	private ObjectInterface object;
 	
-	private Box vBoxL = javax.swing.Box.createVerticalBox();
-	private Box vBoxR = javax.swing.Box.createVerticalBox();
+	private Box vBoxL = Box.createVerticalBox();
+	private Box vBoxR = Box.createVerticalBox();
 	
-	public ObjectTablePanel(ArrayList<ObjectInterface> objects)
+	public ObjectTablePanel(ArrayList<PinInterface> objects)
 	{
 		this.objects = objects;
 		
 		setLayout(new BorderLayout());
-		
-//		vBoxL.setBorder(BorderFactory.createLineBorder(java.awt.Color.GRAY, 1));
-//		vBoxR.setBorder(BorderFactory.createBevelBorder(1));
 		
 		JPanel p = new JPanel(new GridLayout(1,2));
 		
@@ -41,24 +39,9 @@ public class ObjectTablePanel extends JPanel {
 		p.add(vBoxR);
 		
 		add(p, BorderLayout.NORTH);
-		
-//		vBoxL.add(createTextField("links1", false));
-//		vBoxR.add(createTextField("rechts1", true));
-//		vBoxL.add(createTextField("links2", false));
-//		vBoxR.add(createTextField("rechts2", true));
 	}
-	
-//	public JTable getTable()
-//	{
-//		return table;
-//	}
 	
 	public void update()
-	{
-		
-	}
-	
-	public void update(ObjectInterface object)
 	{
 //		System.out.println("aktualisieren!");
 		
@@ -69,17 +52,22 @@ public class ObjectTablePanel extends JPanel {
 		vBoxL.removeAll();
 		vBoxR.removeAll();
 		
-		vBoxL.add(createTextField("Name", false));
-		vBoxR.add(createTextField(object.getName(), true));
-		vBoxL.add(createTextField("ID", false));
-		vBoxR.add(createTextField(""+object.getId(), true));
-		vBoxL.add(createTextField("linecolor", false));
-		tf = createTextField("", false);
-		tf.setBackground(object.getLineColor());
-//		tf.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 0, 0), new EtchedBorder()));
-		vBoxR.add(tf, true);
-		vBoxL.add(createTextField("linewidth", false));
-		vBoxR.add(createTextField(""+object.getLineWidth(), true));
+		for(PinInterface object : objects)
+		{
+			vBoxL.add(createTextField("PIN"+object.getPinId(), false));
+			vBoxR.add(createTextField(""+object.getMode(), false));
+		}
+		
+		
+//		vBoxL.add(createTextField("ID", false));
+//		vBoxR.add(createTextField(""+object.getId(), true));
+//		vBoxL.add(createTextField("linecolor", false));
+//		tf = createTextField("", false);
+//		tf.setBackground(object.getLineColor());
+////		tf.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 0, 0), new EtchedBorder()));
+//		vBoxR.add(tf, true);
+//		vBoxL.add(createTextField("linewidth", false));
+//		vBoxR.add(createTextField(""+object.getLineWidth(), true));
 		
 		
 		repaint();

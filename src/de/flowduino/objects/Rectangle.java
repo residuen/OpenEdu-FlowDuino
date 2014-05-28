@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D;
 
 import de.flowduino.interfaces.ObjectInterface;
-import de.flowduino.tools.PaintConstants;
+import de.flowduino.tools.Constants;
 
 public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 
@@ -18,7 +18,7 @@ public class Rectangle extends Rectangle2D.Double implements ObjectInterface {
 	
 	private float lineWidth = 5.0f;
 	
-	private int typ = PaintConstants.LINE_OBJECT;
+	private int typ = Constants.LINE_OBJECT;
 	private int id = 0;
 
 	private String name = "Rectangle"; 

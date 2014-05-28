@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 import de.flowduino.interfaces.ObjectInterface;
+import de.flowduino.interfaces.PinInterface;
 import de.flowduino.objects.Circle;
 import de.flowduino.objects.Line;
 import de.flowduino.objects.Path;
-import de.flowduino.tools.PaintConstants;
+import de.flowduino.tools.Constants;
 import de.flowduino.visu.DrawPanel;
 import de.flowduino.visu.ObjectTablePanel;
 
@@ -23,12 +24,12 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 //	private final double GRID_STEP = 2.5;
 
 	private JTextField status = null;
-	private ArrayList<ObjectInterface> objects = null;
+	private ArrayList<PinInterface> objects = null;
 	
 	private ObjectTablePanel objectTable = null;
 	
-	private int objectTyp = PaintConstants.LINE_OBJECT;
-	private int menuCLicked = PaintConstants.SEL_TOOL_POINTER;
+	private int objectTyp = Constants.LINE_OBJECT;
+	private int menuCLicked = Constants.SEL_TOOL_POINTER;
 	
 	private boolean catchMode = true;
 	
@@ -58,7 +59,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		this.objectTable = objectTable;
 	}
 
-	public DrawListener(ObjectTablePanel objectTable, JTextField status, ArrayList<ObjectInterface> objects, ObjectInterface catcherRect, DrawPanel comp)
+	public DrawListener(ObjectTablePanel objectTable, JTextField status, ArrayList<PinInterface> objects, ObjectInterface catcherRect, DrawPanel comp)
 	{
 		this.objectTable = objectTable;
 		this.status = status;
@@ -79,7 +80,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		
 		double x = arg0.getX();
 		double y = arg0.getY();
-		double wh = PaintConstants.GRID_STEP*PaintConstants.WIDTH_CATCHER_SQUARE;
+		double wh = Constants.GRID_STEP*Constants.WIDTH_CATCHER_SQUARE;
 		
 		if(catchMode)
 		{
@@ -156,13 +157,13 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		
 		System.out.println("mousePressed: clickCounter="+clickCounter+" selectedCell="+previousSelectedCell.getX()+","+previousSelectedCell.getY()+" lastSelectedCell="+currentSelectedCell.getX()+","+currentSelectedCell.getY());
 
-		if(objectTyp == PaintConstants.LINE_OBJECT && clickCounter==1)
+		if(objectTyp == Constants.LINE_OBJECT && clickCounter==1)
 		{
 			object = new Line(objects.size()+1, x1, y1, x2, y2);
 			System.out.println("objectTyp="+objectTyp);
 		}
 		else
-			if(objectTyp == PaintConstants.PATH_OBJECT)
+			if(objectTyp == Constants.PATH_OBJECT)
 			{
 				if(clickCounter==1)
 					object = new Path(objects.size()+1, x1, y1, x2, y2);
@@ -172,7 +173,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 				System.out.println("objectTyp="+objectTyp);
 			}
 			else
-				if(objectTyp == PaintConstants.CIRCLE_OBJECT && clickCounter==1)
+				if(objectTyp == Constants.CIRCLE_OBJECT && clickCounter==1)
 				{
 					a = catcherRect.getBounds().getWidth();
 					b = 10;
@@ -186,10 +187,10 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 					mousePressed = false;
 				}
 		
-		if(clickCounter==1)
-			objects.add(object);
+//		if(clickCounter==1)
+//			objects.add(object);
 		
-		objectTable.update(object);
+		objectTable.update(); // object);
 		
 		comp.repaint();
 
@@ -202,7 +203,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 	public void mouseReleased(MouseEvent arg0) {
 		System.out.println("mouseReleased:"+objectTyp+"->("+previousSelectedCell.getX()+","+currentSelectedCell.getX()+")("+previousSelectedCell.getY()+","+currentSelectedCell.getY()+")");
 
-		if(objectTyp == PaintConstants.PATH_OBJECT)
+		if(objectTyp == Constants.PATH_OBJECT)
 		{
 			if(previousSelectedCell.getX()==currentSelectedCell.getX() && previousSelectedCell.getY()==currentSelectedCell.getY())
 			{
@@ -212,7 +213,7 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		}
 		else
 		{
-			if(objectTyp == PaintConstants.LINE_OBJECT)
+			if(objectTyp == Constants.LINE_OBJECT)
 			{
 				if(clickCounter==2)
 				{
@@ -269,11 +270,11 @@ public class DrawListener implements MouseListener, MouseMotionListener, MouseWh
 		this.status = status;
 	}
 
-	public ArrayList<ObjectInterface> getObjects() {
+	public ArrayList<PinInterface> getObjects() {
 		return objects;
 	}
 
-	public void setObjects(ArrayList<ObjectInterface> objects) {
+	public void setObjects(ArrayList<PinInterface> objects) {
 		this.objects = objects;
 	}
 
